@@ -1,4 +1,4 @@
-% $Id: digest.Rd 24 2009-09-24 12:36:55Z edd $
+% $Id: digest.Rd 43 2011-09-14 18:26:33Z edd $
 \name{digest}
 \alias{digest}
 \title{Create hash function digests for arbitrary R objects}
@@ -15,7 +15,8 @@
 }
 \usage{
 digest(object, algo=c("md5", "sha1", "crc32", "sha256"), 
-       serialize=TRUE, file=FALSE, length=Inf, skip="auto", ascii=FALSE)
+       serialize=TRUE, file=FALSE, length=Inf, skip="auto", ascii=FALSE,
+       raw=FALSE)
 }
 \arguments{
   \item{object}{An arbitrary R object which will then be passed to the
@@ -46,6 +47,9 @@ digest(object, algo=c("md5", "sha1", "crc32", "sha256"),
   \item{ascii}{This flag is passed to the \code{serialize} function if
     \code{serialize} is set to \code{TRUE}, determining whether the hash
     is computed on the ASCII or binary represenataion.}
+  \item{raw}{A logical variable with a default value of FALSE, implying
+    \code{digest} returns digest output as ASCII hex values. Set to TRUE
+    to return \code{digest} output in raw (binary) form. }
 }
 \value{
   The \code{digest} function returns a character string of a fixed
