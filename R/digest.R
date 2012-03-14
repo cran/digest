@@ -1,5 +1,5 @@
 
-# $Id: digest.R 43 2011-09-14 18:26:33Z edd $
+# $Id: digest.R 46 2012-03-15 04:40:30Z edd $
 
  digest <- function(object, algo=c("md5", "sha1", "crc32", "sha256"),
                     serialize=TRUE, file=FALSE, length=Inf,
@@ -54,6 +54,9 @@
      if (!isTRUE(!file.info(object)$isdir)) {
        stop("The specified pathname is not a file: ", object)
      }
+     if (file.access(object, 4)) {
+       stop("The specified file is not readable: ", object)
+     }
    }
    ## if skip is auto (or any other text for that matter), we just turn it
    ## into 0 because auto should have been converted into a number earlier
@@ -68,6 +71,3 @@
                 PACKAGE="digest")
    return(val)
 }
-
-
-
