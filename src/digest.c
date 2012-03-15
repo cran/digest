@@ -4,7 +4,7 @@
 
   Copyright (C) 2003 - 2011  Dirk Eddelbuettel <edd@debian.org>
 
-  $Id: digest.c 42 2011-09-14 17:11:45Z edd $
+  $Id: digest.c 46 2012-03-15 04:40:30Z edd $
 
   This file is part of the digest packages for GNU R.
   It is made available under the terms of the GNU General Public
@@ -135,7 +135,7 @@ SEXP digest(SEXP Txt, SEXP Algo, SEXP Length, SEXP Skip, SEXP Leave_raw) {
       unsigned char md5sum[16];
 
       if (!(fp = fopen(txt,"rb"))) {
-        error(strcat("Cannot open input file: ", txt));    
+        error("Cannot open input file: %s", txt);
         return(NULL);
       }
       if (skip > 0) fseek(fp, skip, SEEK_SET);
@@ -167,7 +167,7 @@ SEXP digest(SEXP Txt, SEXP Algo, SEXP Length, SEXP Skip, SEXP Leave_raw) {
       unsigned char sha1sum[20];
       
       if (!(fp = fopen(txt,"rb"))) {
-        error(strcat("Cannot open input file: ", txt));    
+        error("Cannot open input file: %s", txt);
         return(NULL);
       }
       if (skip > 0) fseek(fp, skip, SEEK_SET);
@@ -196,7 +196,7 @@ SEXP digest(SEXP Txt, SEXP Algo, SEXP Length, SEXP Skip, SEXP Leave_raw) {
       unsigned long val;
       
       if (!(fp = fopen(txt,"rb"))) {
-        error(strcat("Cannot open input file: ", txt));    
+        error("Cannot open input file: %s", txt);
         return(NULL);
       }
       if (skip > 0) fseek(fp, skip, SEEK_SET);
@@ -224,7 +224,7 @@ SEXP digest(SEXP Txt, SEXP Algo, SEXP Length, SEXP Skip, SEXP Leave_raw) {
       unsigned char sha256sum[32];
       
       if (!(fp = fopen(txt,"rb"))) {
-        error(strcat("Cannot open input file: ", txt));    
+        error("Cannot open input file: %s", txt);
         return(NULL);
       }
       if (skip > 0) fseek(fp, skip, SEEK_SET);
