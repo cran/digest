@@ -1,6 +1,6 @@
 Package: digest
-Version: 0.6.1
-Date: $Date: 2013-01-21 09:25:44 -0600 (Mon, 21 Jan 2013) $
+Version: 0.6.2
+Date: $Date: 2013-01-25 08:42:35 -0600 (Fri, 25 Jan 2013) $
 Author: Dirk Eddelbuettel <edd@debian.org> with contributions by
         Antoine Lucas, Jarek Tuszynski, Henrik Bengtsson, Simon
         Urbanek, Mario Frasca, Bryan Lewis, Murray Stokely, Hannes
@@ -29,6 +29,6 @@ Description: The digest package provides a function 'digest()' for the
 Depends: R (>= 2.4.1)
 License: GPL-2
 URL: http://dirk.eddelbuettel.com/code/digest.html
-Packaged: 2013-01-21 15:25:48.735034 UTC; edd
+Packaged: 2013-01-25 17:33:37.284896 UTC; edd
 Repository: CRAN
-Date/Publication: 2013-01-21 18:53:36
+Date/Publication: 2013-01-25 18:44:04
