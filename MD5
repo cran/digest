@@ -1,9 +1,9 @@
-231878e2a22202d7b58500599ba1aa1a *ChangeLog
-098e6b52759966b9fdb6760c3ad6d7b4 *DESCRIPTION
+26fb1d174d7837a1a090d35b9ffff869 *ChangeLog
+556398539ed0d64e0786928909d47ec7 *DESCRIPTION
 feb0fc00ca3c5a93ca6acea00eaafd88 *NAMESPACE
 4077023e9f95fd378e6c3f74629bbaeb *R/AES.R
 95a0d756c48a850cab56c1ad85a1d92f *R/digest.R
-06343db134cad40f327b4f7f36e67d13 *R/hmac.R
+89ec94daa73e206eab48412b777e6fc0 *R/hmac.R
 018a0f4dae8432e6bf3c8e69fca7c0db *cleanup
 b234ee4d69f5fce4486a80fdaf4a4263 *inst/GPL-2
 8a699d1c9a0c7b6458eb19da3a3bb716 *man/AES.Rd
@@ -30,5 +30,5 @@ c4564a01a95ad6d04fec9c4ef0561cee *src/zutil.h
 2bfe5f1ffd9f9136734fd16cd7b92831 *tests/AESTest.Rout.save
 ea47888265859f7a0509df07e9db091f *tests/digestTest.R
 083cde6cd42a75e9771dae65c9bd8572 *tests/digestTest.Rout.save
-5a702fde6379db6590e127c3d07ae7fa *tests/hmacTest.R
-77c79acc0d6ebd9fe90beca2daca8b3f *tests/hmacTest.Rout.save
+ca59b9a5bbad58299577507dbee9708d *tests/hmacTest.R
+707c6b69b52c82b7c45130b1335d5669 *tests/hmacTest.Rout.save
