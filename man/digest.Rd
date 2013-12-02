@@ -1,4 +1,4 @@
-% $Id: digest.Rd 49 2012-11-24 16:26:36Z hannes $
+% $Id: digest.Rd 65 2013-12-03 04:01:04Z edd $
 \name{digest}
 \alias{digest}
 \title{Create hash function digests for arbitrary R objects}
@@ -171,8 +171,12 @@ sha512Input <-
   c("abc",
     "abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq")
 sha512Output <- 
-  c("ddaf35a193617abacc417349ae20413112e6fa4e89a97ea20a9eeee64b55d39a2192992a274fc1a836ba3c23a3feebbd454d4423643ce80e2a9ac94fa54ca49f",
-    "204a8fc6dda82f0a0ced7beb8e08a41657c16ef468b228a8279be331a703c33596fd15c13b1b07f9aa1d3bea57789ca031ad85c7a71dd70354ec631238ca3445")
+  c(paste("ddaf35a193617abacc417349ae20413112e6fa4e89a97ea20a9eeee64b55d39a",
+          "2192992a274fc1a836ba3c23a3feebbd454d4423643ce80e2a9ac94fa54ca49f",
+          sep=""),
+    paste("204a8fc6dda82f0a0ced7beb8e08a41657c16ef468b228a8279be331a703c335",
+          "96fd15c13b1b07f9aa1d3bea57789ca031ad85c7a71dd70354ec631238ca3445",
+          sep=""))
 
 for (i in seq(along=sha512Input)) {
   sha512 <- digest(sha512Input[i], algo="sha512", serialize=FALSE)
@@ -205,4 +209,3 @@ h2 <- digest(fname, algo="md5", file=TRUE)
 stopifnot( identical(h1,h2) )
 }
 \keyword{misc}
-
