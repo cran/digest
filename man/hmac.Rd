@@ -1,4 +1,4 @@
-% $Id: hmac.Rd 49 2012-11-24 16:26:36Z hannes $
+% $Id: hmac.Rd 65 2013-12-03 04:01:04Z edd $
 \name{hmac}
 \alias{hmac}
 \title{compute a hash-based message authentication code}
@@ -8,7 +8,9 @@
   combination with a given secret key.
 }
 \usage{
-hmac(key, object, algo = c("md5", "sha1", "crc32", "sha256", "sha512"), serialize = FALSE, raw = FALSE, ...)
+hmac(key, object,
+     algo = c("md5", "sha1", "crc32", "sha256", "sha512"),
+     serialize = FALSE, raw = FALSE, ...)
 }
 \arguments{
   \item{key}{An arbitrary character or numeric vector, to use as
