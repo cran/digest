@@ -1,4 +1,3 @@
-% $Id: hmac.Rd 65 2013-12-03 04:01:04Z edd $
 \name{hmac}
 \alias{hmac}
 \title{compute a hash-based message authentication code}
