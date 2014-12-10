@@ -1,5 +1,5 @@
-736209045bc6bbe257e26febe6a5d179 *ChangeLog
-2fbe64bcef87eab02750025e070dd7ef *DESCRIPTION
+fdec3644a3c4f949d5ef80bd71f212ac *ChangeLog
+c4058e65aa5486d85d45fb01b147e6aa *DESCRIPTION
 86de1e87290bedc13d16a32d758cad84 *NAMESPACE
 f27f7f367f10859db631c4d71b76240d *R/AES.R
 0e27457e0cd5f500cb7bf38eab6f9ec5 *R/digest.R
@@ -14,7 +14,7 @@ a9a366c2127ba8c1b04e031365342d0c *man/hmac.Rd
 12398d282dd19894ed5548fc55fff7c4 *src/aes.h
 76552de67b8cbff2a1fcd27499dc5710 *src/crc32.c
 4d1cfa258e52f3f91b09afdba248fec5 *src/crc32.h
-ae93737e1d927ee7210059c00695ba1e *src/digest.c
+e5863221400ee333258411ef6c0b3790 *src/digest.c
 b67492e514895c1e1f9738a8cb49313d *src/md5.c
 9847470291dc6d9a7d86ae83d225745e *src/md5.h
 7b39af6a1f1d32cb8819853970ada9d2 *src/raes.c
