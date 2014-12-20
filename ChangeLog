@@ -1,9 +1,45 @@
+2014-12-20  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version): Version 0.6.7
+
+	* DESCRIPTION (Date): Bumped Date: to current date
+
+2014-12-19  Dirk Eddelbuettel  <edd@debian.org>
+
+	* cleanup: Also remove src/symbols.rds
+
+	* src/sha2.c: Apply (slightly edited) patch from
+	https://www.nlnetlabs.nl/bugs-script/attachment.cgi?id=220&action=diff
+	to overcome the strict-aliasing warning
+
+	* src/digest.c: Use inttypes.h macro PRIx64 only on Windows
+
+2014-12-16  Dirk Eddelbuettel  <edd@debian.org>
+
+	* src/xxhash.c: Remove two semicolons to make gcc -pedantic happy
+	* tests/digestTest.Rout.save: Updated reflecting murmurHash test
+	* src/pmurhash.c: Renamed from PMurHash.c for naming consistency
+	* src/pmurhash.h: Renamed from PMurHash.h for naming consistency
+
+2014-12-16  Jim Hester <james.f.hester@gmail.com>
+
+	* src/digest.c: murmurHash implementation
+	* tests/digestTest.R: murmurHash implementation
+	* R/digest.R: murmurHash implementation
+	* src/PMurHash.c: murmurHash implementation
+	* src/PMurHash.h: murmurHash implementation
+
+2014-12-10  Dirk Eddelbuettel  <edd@debian.org>
+
+	* src/xxhash.c: Applied pull request #6 by Jim Hester with updated
+	upstream code and already corrected UBSAN issue identified by CRAN
+
 2014-12-09  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version): Version 0.6.6
 
 	* DESCRIPTION (Date): Bumped Date: to current date
-	
+
 	* src/digest.c: Applied pull request #5 by Jim Hester providing
 	portable integer printing inttypes.h header
 
