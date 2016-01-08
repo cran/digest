@@ -15,7 +15,8 @@
 \usage{
 digest(object, algo=c("md5", "sha1", "crc32", "sha256", "sha512",
        "xxhash32", "xxhash64", "murmur32"), serialize=TRUE, file=FALSE,
-       length=Inf, skip="auto", ascii=FALSE, raw=FALSE, seed=0)
+       length=Inf, skip="auto", ascii=FALSE, raw=FALSE, seed=0,
+       errormode=c("stop","warn","silent"))
 }
 \arguments{
   \item{object}{An arbitrary R object which will then be passed to the
@@ -54,6 +55,10 @@ digest(object, algo=c("md5", "sha1", "crc32", "sha256", "sha512",
     used in the \code{xxhash32}, \code{xxhash64} and \code{murmur32} functions
     and can be used to generate additional hashes for the same input if
     desired.}
+  \item{errormode}{A character value denoting a choice for the behaviour in
+    the case of error: \sQuote{stop} aborts (and is the default value),
+    \sQuote{warn} emits a warning and returns \code{NULL} and
+    \sQuote{silent} suppresses the error and returns an empty string.}
 }
 \value{
   The \code{digest} function returns a character string of a fixed
@@ -66,8 +71,7 @@ digest(object, algo=c("md5", "sha1", "crc32", "sha256", "sha512",
   Cryptographic hash functions are well researched and documented. The
   MD5 algorithm by Ron Rivest is specified in RFC 1321. The SHA-1
   algorithm is specified in FIPS-180-1, SHA-2 is described in
-  FIPS-180-2. Crc32 is described in
-  \url{ftp://ftp.rocksoft.com/cliens/rocksoft/papers/crc_v3.txt}.
+  FIPS-180-2. 
 
   For md5, sha-1 and sha-256, this R implementation relies on standalone
   implementations in C by Christophe Devine. For crc32, code from the
@@ -91,13 +95,18 @@ digest(object, algo=c("md5", "sha1", "crc32", "sha256", "sha512",
 
   SHA-1: \url{http://www.itl.nist.gov/fipspubs/fip180-1.htm}.
   SHA-256: \url{http://csrc.nist.gov/publications/fips/fips180-2/fips180-2withchangenotice.pdf}.
-  CRC32:  \url{ftp://ftp.rocksoft.com/cliens/rocksoft/papers/crc_v3.txt}. 
+  CRC32:  The original reference webpage at \code{rocksoft.com} has
+  vanished from the web; see
+  \url{https://en.wikipedia.org/wiki/Cyclic_redundancy_check} for
+  general information on CRC algorithms.
   
   \url{http://www.aarongifford.com/computers/sha.html} for the 
   integrated C implementation of sha-512.
 
-  \url{http://www.cr0.net:8040/code/crypto} for the underlying
-  C functions used here for sha-1 and md5, and further references.
+  The page for the code underlying the C functions used here for sha-1
+  and md5, and further references, is no longer accessible.  Please see
+  \url{https://en.wikipedia.org/wiki/SHA-1} and
+  \url{https://en.wikipedia.org/wiki/MD5}.  
 
   \url{http://zlib.net} for documentation on the zlib library which
   supplied the code for crc32.

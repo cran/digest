@@ -1,3 +1,47 @@
+2016-01-07  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version): Version 0.6.9
+
+	* DESCRIPTION (Date): Bumped Date: to current date
+
+2016-01-06  Dirk Eddelbuettel  <edd@debian.org>
+
+	* vignettes/sha1.Rmd: Small edits
+
+2016-01-06  Thierry Onkelinx <thierry.onkelinx@inbo.be>
+
+	* R/sha1.R: Add functions to calculate stable SHA1 with floating points
+	* man/sha1.Rd: Add helpfile for sha1()
+
+	* tests/num2hexTest.R: unit tests for num2hex() (non exported function)
+	* tests/sha1Test.R: unit tests for sha1()
+
+	* NAMESPACE: Export sha1 and its methods
+
+	* DESCRIPTION: Add Thierry Onkelinx as contributor, bump Version and Date
+	* README.md: Add Thierry Onkelinx as contributor
+
+	* vignette/sha1.Rmd: Added
+
+	* .travis.yml: Added 'sudo: required' per recent Travis changes
+
+2015-10-14  Dirk Eddelbuettel  <edd@debian.org>
+
+	* man/digest.Rd: Remove references to inaccessible web pages
+	* man/hmac.Rd: Ditto
+
+2015-10-13  Dirk Eddelbuettel  <edd@debian.org>
+
+	* src/digest.c: Use uint32_t instead of int for nchar
+
+2015-10-12  Qiang Kou <qkou@umail.iu.edu>
+
+	* src/digest.c: Use XLENGTH instead of LENGTH (PR #17, issue #16)
+
+2015-08-06  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Title): Updated now stressing 'compact' over 'crypto'
+
 2014-12-30  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version): Version 0.6.8
