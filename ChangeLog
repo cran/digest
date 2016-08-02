@@ -1,3 +1,57 @@
+2016-08-02  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version): Release 0.6.10
+
+	* DESCRIPTION (Description): Shortened to one paragraph
+	* DESCRIPTION (BugReports): URL to GH issues added
+
+	* .travis.yml: Rewritten for run.sh from forked r-travis
+
+2016-07-12  Henrik Bengtsson  <hb@aroma-project.org>
+
+	* src/digest.c: Correct bug with skip and file parameter interaction
+	* tests/digestTest.R: Test code
+	* tests/digestTest.Rout.save: Test reference output
+
+	* R/zzz.R: Allow for unloading of shared library
+	* tests/load-unload.R: Test code
+
+	* DESCRIPTION: Rolled minor Version and Date
+
+2016-05-25 Thierry Onkelinx <thierry.onkelinx@inbo.be>
+
+	* R/sha1.R: Support for pairlist and name
+	* tests/sha1Test.R: Support for pairlist and name
+	* man/sha1.Rd: Support for pairlist, name, complex, array and Date
+	* NAMESPACE: Support for pairlist, name and array
+	* DESCRIPTION: bump version number and date
+
+2016-05-01  Viliam Simko  <viliam.simko@gmail.com>
+
+	* R/sha1.R: Support for complex, Date and array
+	* tests/sha1Test.R: Ditto
+	* NAMESPACE: Ditto
+
+2016-04-27  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Author): Add Qiang Kou to Authors
+	* README.md: Ditto
+
+2016-01-25  Dirk Eddelbuettel  <edd@debian.org>
+
+	* src/digest.c (digest): Use XLENGTH if R >= 3.0.0 (issue #29)
+
+2016-01-11 Thierry Onkelinx  <thierry.onkelinx@inbo.be>
+
+	* R/sha1.R: handle empty list and empty dataframe (#issue 27);
+	take the object class, digits and zapsmall into account (#PR 28)
+
+	* vignettes/sha1.Rmd: Small edits to reflect changes is sha1()
+
+2016-01-09 Michel Lang  <michellang@gmail.com>
+
+	* R/sha1.R: Add a length check to sha1(), use vapply()
+
 2016-01-07  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version): Version 0.6.9
@@ -154,7 +208,7 @@
 	* R/digest.R: Applied pull request #3 by Jim Hester with support for
 	xxHash (https://code.google.com/p/xxhash/)
 	* src/digest.c: Ditto
-	
+
 	* src/xxhash.c: xxHash implementation supplied as part of #3
 	* src/xxhash.h: xxHash implementation supplied as part of #3
 
