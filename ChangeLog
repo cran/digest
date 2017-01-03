@@ -1,3 +1,74 @@
+2017-01-01  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Release 0.6.11
+
+	* R/sha1.R (sha1.anova): Added more #nocov marks
+	* src/sha2.c (SHA256_Transform): Idem
+
+	* tests/AESTest.R (hextextToRaw): Print AES object
+	* tests/AESTest.Rout.save: Updated
+
+2016-12-08  Dirk Eddelbuettel  <edd@debian.org>
+
+	* NAMESPACE: Register (and exported) makeRaw S3 methods
+
+	* man/makeRaw.Rd: New manual page
+
+	* tests/hmacTest.R: Direct call to makeRaw()
+	* tests/hmacTest.Rout.save: Ditto
+
+	* src/digest.c: Additional #nocov tags
+	* src/xxhash.c: Ditto
+
+2016-12-07  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Rolled minor version
+
+	* README.md: Use shields.io badge for codecov
+
+	* R/digest.R: Additional #nocov tags
+	* src/sha2.c: Ditto
+	* src/raes.c: Ditto
+
+	* tests/hmacTest.R: Additional tests
+	* tests/hmacTest.Rout.save: Ditto
+
+2016-11-30  Dirk Eddelbuettel  <edd@debian.org>
+
+	* .travis.yml (before_install): Activate PPA as we (currently)
+	need an updated version of (r-cran)-covr to run coverage
+	* tests/load-unload.R: Comment-out for now as it upsets coverage
+
+	* tests/digestTest.R: Test two more algorithms
+	* tests/digestTest.Rout.save: Updated reference output
+
+	* R/digest.R: Added #nocov tags
+	* R/zzz.R (.onUnload): Ditto
+	* src/crc32.c: Ditto
+	* src/pmurhash.c: Ditto
+	* src/raes.c: Ditto
+	* src/sha2.c: Ditto
+	* src/xxhash.c: Ditto
+
+2016-11-26  Dirk Eddelbuettel  <edd@debian.org>
+
+	* .travis.yml (after_success): Integrated Jim Hester's suggestion of
+	activating code coverage sent many moons ago (in PR #12)
+	* .codecov.yml (comment): Added
+	* .Rbuildignore: Exclude .codecov.yml
+	* README.md: Added code coverage badge
+
+2016-10-16  Dirk Eddelbuettel  <edd@debian.org>
+
+	* R/digest.R (digest): Support 'nosharing' option of base::serialize
+	as suggested by Radford Neal whose pqR uses this
+
+2016-08-02  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (License): Now GPL (>= 2), cf issue 36 on GH
+
+	* README.md: Updated badge accordingly
+
 2016-08-02  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version): Release 0.6.10

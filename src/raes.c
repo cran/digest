@@ -8,7 +8,7 @@
 
 static aes_context ctx;
 
-void encrypt(unsigned char *key, int *len, unsigned char *text) {
+void encrypt(unsigned char *key, int *len, unsigned char *text) { /* #nocov start */ 
   aes_set_key(&ctx, key, 8*(*len));
   aes_encrypt(&ctx, text, text);
 }
@@ -24,7 +24,7 @@ static void AESFinalizer(SEXP ptr)
   if (!ctx) return;
   Free(ctx);
   R_ClearExternalPtr(ptr);
-}
+} /* #nocov end */
 
 SEXP AESinit(SEXP key) {
   int nbits = 8*length(key);
@@ -34,16 +34,16 @@ SEXP AESinit(SEXP key) {
   aes_context *ctx;
   
   if (TYPEOF(key) != RAWSXP)
-    error("key must be a raw vector");
+    error("key must be a raw vector"); 				/* #nocov */
   
   if (nbits != 128 && nbits != 192 && nbits != 256)
-    error("AES only supports 16, 24 and 32 byte keys");
+    error("AES only supports 16, 24 and 32 byte keys"); 	/* #nocov */
     
   ctx = (aes_context*)Calloc(sizeof(*ctx), char);
   
   status = aes_set_key(ctx, (uint8 *) RAW(key), nbits);
   if (status)
-    error("AES initialization failed");
+    error("AES initialization failed");				/* #nocov */
   
   result = R_MakeExternalPtr(ctx, install("AES_context"), R_NilValue);
   PROTECT(result);
@@ -58,11 +58,11 @@ SEXP AESencryptECB(SEXP context, SEXP text) {
   unsigned char *block;
   
   if (!ctx) 
-    error("AES context not initialized");
+    error("AES context not initialized"); 			/* #nocov */
   if (TYPEOF(text) != RAWSXP)
-    error("Text must be a raw vector");
+    error("Text must be a raw vector");				/* #nocov */
   if (len % 16)
-    error("Text length must be a multiple of 16 bytes");
+    error("Text length must be a multiple of 16 bytes");	/* #nocov */
   
   if (NAMED(text)) text = duplicate(text);
   
@@ -81,11 +81,11 @@ SEXP AESdecryptECB(SEXP context, SEXP ciphertext) {
   unsigned char *block;
   
   if (!ctx) 
-    error("AES context not initialized");
+    error("AES context not initialized");			/* #nocov */
   if (TYPEOF(ciphertext) != RAWSXP)
-    error("Ciphertext must be a raw vector");
+    error("Ciphertext must be a raw vector");			/* #nocov */
   if (len % 16)
-    error("Ciphertext length must be a multiple of 16 bytes");
+    error("Ciphertext length must be a multiple of 16 bytes");	/* #nocov */
   
   if (NAMED(ciphertext)) ciphertext = duplicate(ciphertext);
   
