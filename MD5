@@ -1,10 +1,10 @@
-be464d9cf650136cc4b35ea9e9260806 *ChangeLog
-a4b5d37e9363af383cf295a89fbf0111 *DESCRIPTION
-bc7a45883177742e8a8e369eb22fecca *NAMESPACE
+1abe1f475ccf05e111ab0a9198f06d72 *ChangeLog
+b4d23a4dfe385ebdcb69d50a50bed93c *DESCRIPTION
+a8b87f51471d4ce7baa591d7a0892d2d *NAMESPACE
 f27f7f367f10859db631c4d71b76240d *R/AES.R
 78a243c8bfeb2b144fedb202ddadc2b2 *R/digest.R
 92f7875a5bc840f35186438dcb561c2b *R/hmac.R
-7978ebf404937e89f42efaf37cfda5ac *R/sha1.R
+dd3dfe50bf97233e64da97858c4264f2 *R/sha1.R
 a673761518607ae09b8f6357c6304c60 *R/zzz.R
 2c228947b38132763b3b79b4f5f26c8e *README.md
 4f532fce56dc86e71c4ad1f0800617a4 *build/vignette.rds
@@ -12,13 +12,13 @@ a3ed5d1e4b47a1ce2fbd9f2b19af5904 *cleanup
 b234ee4d69f5fce4486a80fdaf4a4263 *inst/GPL-2
 7352dcd571edb9d1420f0a6660aeecfb *inst/doc/sha1.R
 655f34d97fff80c46ebcba14e8e99455 *inst/doc/sha1.Rmd
-e4850c95ced8f48a01d668093395f7c3 *inst/doc/sha1.html
+48f359574819d1df4d91b5f9ba6606b8 *inst/doc/sha1.html
 82a62fb6337a2be9ae069fee3d50b614 *inst/include/pmurhashAPI.h
 8a699d1c9a0c7b6458eb19da3a3bb716 *man/AES.Rd
 e0471480b8067d7634725aa14b442c73 *man/digest.Rd
 a0b8c2145c06bd09b0396e7d8115b97c *man/hmac.Rd
 9d566e9d729f574b922fb174f20f1d3b *man/makeRaw.Rd
-5bb4495ac372b19a8ccfde3932aa0a24 *man/sha1.rd
+65dc9b7ddf55599fd92869d2cb3f7955 *man/sha1.rd
 0817cfd8e7791f667a53297b00ea430a *src/aes.c
 12398d282dd19894ed5548fc55fff7c4 *src/aes.h
 2cb721d135ea8eec6aeceedcd26706e5 *src/crc32.c
@@ -49,5 +49,5 @@ fafe6faa7e698a0bf8b927cb492a9d6b *tests/hmacTest.R
 59759783a26aae07e44dfb1477184b2a *tests/hmacTest.Rout.save
 7543f70826987e6fccd4b775f41411c7 *tests/load-unload.R
 c97461d53218ceecf504866fc5e054ec *tests/num2hexTest.R
-e30464aa0a975e542bd348568bb97a40 *tests/sha1Test.R
+5dc2b4c0d517b5e85ebec5234b22b675 *tests/sha1Test.R
 655f34d97fff80c46ebcba14e8e99455 *vignettes/sha1.Rmd

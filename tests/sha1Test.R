@@ -374,5 +374,12 @@ stopifnot(
     grepl("sha1\\(\\) has not method for the 'A', 'B' class", error.message)
 )
 
-stopifnot(sha1(formals(lm)) == "b8c1359ca3f9e16d64d3c67e50611ca724e4b27d")
-stopifnot(sha1(formals(cov2cor)) == "9cd0f7430f50c301cf1b84cf3ee10b334d023809")
+junk <- function(
+    x, y = list(...), test = TRUE, start = NULL, text = "abc", family = poisson,
+    ...
+){
+    sha1(x)
+}
+stopifnot(sha1(junk) == "be194e8cdae926c13fd4e2c65bf6cb7a28dd0505")
+stopifnot(sha1(junk) == sha1(junk, environment = TRUE))
+stopifnot(sha1(junk) != sha1(junk, environment = FALSE))
