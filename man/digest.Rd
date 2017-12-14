@@ -16,7 +16,8 @@
 digest(object, algo=c("md5", "sha1", "crc32", "sha256", "sha512",
        "xxhash32", "xxhash64", "murmur32"), serialize=TRUE, file=FALSE,
        length=Inf, skip="auto", ascii=FALSE, raw=FALSE, seed=0,
-       errormode=c("stop","warn","silent"))
+       errormode=c("stop","warn","silent"),
+       serializeVersion=.getSerializeVersion())
 }
 \arguments{
   \item{object}{An arbitrary R object which will then be passed to the
@@ -32,7 +33,7 @@ digest(object, algo=c("md5", "sha1", "crc32", "sha256", "sha512",
     output of given character strings to known control output. It also
     allows the use of raw vectors such as the output of non-ASCII
     serialization.
- }
+  }
   \item{file}{A logical variable indicating whether the object is a file
     name or a file name if \code{object} is not specified.}
   \item{length}{Number of characters to process. By default, when
@@ -50,7 +51,9 @@ digest(object, algo=c("md5", "sha1", "crc32", "sha256", "sha512",
     is computed on the ASCII or binary representation.}
   \item{raw}{A logical variable with a default value of FALSE, implying
     \code{digest} returns digest output as ASCII hex values. Set to TRUE
-    to return \code{digest} output in raw (binary) form. }
+    to return \code{digest} output in raw (binary) form. Note that this
+    option is supported by most but not all of the implemented hashing
+    algorithms}
   \item{seed}{an integer to seed the random number generator.  This is only
     used in the \code{xxhash32}, \code{xxhash64} and \code{murmur32} functions
     and can be used to generate additional hashes for the same input if
@@ -59,6 +62,11 @@ digest(object, algo=c("md5", "sha1", "crc32", "sha256", "sha512",
     the case of error: \sQuote{stop} aborts (and is the default value),
     \sQuote{warn} emits a warning and returns \code{NULL} and
     \sQuote{silent} suppresses the error and returns an empty string.}
+  \item{serializeVersion}{An integer value specifying the internal
+    version of the serialization format, with 2 being the default;
+    see \code{\link{serialize}} for details. The \code{serializeVersion}
+    field of \code{\link{option}} can also be used to set a different
+    value.}
 }
 \value{
   The \code{digest} function returns a character string of a fixed
@@ -114,10 +122,10 @@ digest(object, algo=c("md5", "sha1", "crc32", "sha256", "sha512",
   \url{http://en.wikipedia.org/wiki/SHA_hash_functions} for
   documentation on the sha functions.
 
-  \url{https://code.google.com/p/xxhash/} for documentation on the xxHash
+  \url{https://github.com/Cyan4973/xxHash} for documentation on the xxHash
   functions.
 
-  \url{https://code.google.com/p/smhasher/} for documentation on MurmurHash.
+  \url{https://github.com/aappleby/smhasher} for documentation on MurmurHash.
 
 }
 \author{Dirk Eddelbuettel \email{edd@debian.org} for the \R interface;
@@ -280,5 +288,14 @@ fname <- file.path(R.home(),"COPYING")
 h1 <- as.character(md5sum(fname))
 h2 <- digest(fname, algo="md5", file=TRUE)
 stopifnot( identical(h1,h2) )
+
+## digest is _designed_ to return one has summary per object to for a desired
+## vector of digests you need to explicitly loop, which Vectorize() can do for
+## you -- see this nice SO answer: https://stackoverflow.com/a/28360092/143305
+vdigest <- Vectorize(digest)
+v <- vdigest(1:5)     			# digest integers 1 to 5
+stopifnot(identical(v[1], digest(1L)),	# check first and third result
+          identical(v[3], digest(3L)))
+
 }
 \keyword{misc}
