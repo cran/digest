@@ -1,3 +1,53 @@
+2018-08-21  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Date, Version): Release 0.6.16
+
+2018-08-20  Dirk Eddelbuettel  <edd@debian.org>
+
+	* tests/digestTest.Rout: Skip one test which creates different
+	results across versions and operating systems
+	* tests/digestTest.Rout.save: Ditto
+
+2018-08-19  Dirk Eddelbuettel  <edd@debian.org>
+
+	* tests/hmacTest.R: Added raw test
+	* tests/hmacTest.Rout.save: Updated reference output accordingly
+
+	* tests/raw.R: Added test for 'raw' vector input to sha1()
+
+	* R/sha1.R: Removed no longer needed #nocov tags
+
+2018-07-21  Henrik Bengtsson  <hb@aroma-project.org>
+
+	* DESCRIPTION: digest (>= 0.6.14) requires R (>= 3.0.3)
+
+2018-06-30  Dirk Eddelbuettel  <edd@debian.org>
+
+	* tests/crc32.R: Added test for crc32 and old versus new formats
+	* tests/raw.R: Added small test file for raw tests
+
+2018-06-29  Dirk Eddelbuettel  <edd@debian.org>
+
+	* R/init.R: Provide option 'digestOldCRC32Format' which if TRUE
+	returns without zero padding which can be shorter than eight bytes
+	* R/digest.R: If crc32 selected and option set, return in old format
+	* man/digest.Rd: Document new option
+
+2018-06-28  Dirk Eddelbuettel  <edd@debian.org>
+
+	* src/digest.c (digest): Change print format for crc32 to always
+	return eight characters and no longer drop leading zeros (thanks to
+	Henrik Bengtsson for the heads-up)
+
+2018-06-21  Dirk Eddelbuettel  <edd@debian.org>
+
+	* tests/sha1Test.R: Do not run test using serialize() as its output
+	always reflects the R version used (thanks, Radford Neal)
+
+2018-01-29  Dirk Eddelbuettel  <edd@debian.org>
+
+	* src/sha2.c: Comment-out three unused 'const static' variables
+
 2018-01-28  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Date, Version): Release 0.6.15
