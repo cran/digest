@@ -1,5 +1,5 @@
-6671a826fe5f51ef2dc44ac47f453e2c *ChangeLog
-03693ec62b4eb04b9c2fb61323e4e8a4 *DESCRIPTION
+2e6635deffd1625769b2dd579bcb89bf *ChangeLog
+74c14505401a89feea77db0383bf10e8 *DESCRIPTION
 d1beebfa61568049b28e5c0beaeec989 *NAMESPACE
 0b1561aa71e711f4d8f96c2b4e6feb2a *R/AES.R
 c43e57c501a5a8343fb9b6ca596b2a6c *R/digest.R
@@ -13,7 +13,7 @@ a3ed5d1e4b47a1ce2fbd9f2b19af5904 *cleanup
 b234ee4d69f5fce4486a80fdaf4a4263 *inst/GPL-2
 66543dd41ac71af75aeec720f7ad3f38 *inst/doc/sha1.R
 912b8395bbeb8c511e1f75b46d8157a6 *inst/doc/sha1.Rmd
-136dbd0c9e901cf3e259955c2c41391c *inst/doc/sha1.html
+5f364f6a57fb78e6c0081753a7fd8085 *inst/doc/sha1.html
 82a62fb6337a2be9ae069fee3d50b614 *inst/include/pmurhashAPI.h
 80508d989e412a9ee28e63697e793f05 *man/AES.Rd
 6b745e5ce38b5cbc04eacecb80833855 *man/digest.Rd
@@ -33,8 +33,8 @@ a529d657388750546c7e03442eb01c31 *src/aes.c
 64d967be5b5ec3024bf284dede078d48 *src/raes.c
 2501b53d87d8f7e46cdbfe7b4f132643 *src/sha1.c
 7cf279b5c8a6743e49a2c37d105733f5 *src/sha1.h
-436e06a87a178af8bd550a767ed1f494 *src/sha2.c
-9fb42f8ccf7cc828d0548a3b59df3ae9 *src/sha2.h
+8d064ddc365bbb2ea9d72d9b83017d4c *src/sha2.c
+8cb23ad7160a7a9faf1f3b2b6ed3c6bc *src/sha2.h
 c8089bc1a0cda904888249da6af7f29c *src/sha256.c
 82a758ff49a4a2c5dfc82852d57f9a44 *src/sha256.h
 32a2bb031ff770123facc802ca1f8871 *src/xxhash.c
