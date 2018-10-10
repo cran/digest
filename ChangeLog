@@ -1,3 +1,30 @@
+2018-10-10  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Date, Version): Release 0.6.18
+
+2018-09-16  Dirk Eddelbuettel  <edd@debian.org>
+
+	* src/digest.c (digest): Six more #nocov tags
+
+	* README.md: Small edits
+
+2018-09-14  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Roll minor version
+
+	* src/sha2.c: Explicitly #undef SHA256_ and SHA384_ functions not
+	used from this file
+
+2018-09-13  Radford Neal  <radfordneal@gmail.com>
+
+	* src/pmurhash.c (DOBYTES): Explicit cast to uint32_t avoids UBSAN
+
+2018-09-13  Jim Hester  <james.f.hester@gmail.com>
+
+	* src/xxhash.c: Updated to use xxHash v0.6.5
+	* src/xxhash.h: Ditto
+	* src/digest.c: Ditto
+
 2018-09-11  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Date, Version): Release 0.6.17
