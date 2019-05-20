@@ -1,4 +1,4 @@
-## digest [![Build Status](https://travis-ci.org/eddelbuettel/digest.svg)](https://travis-ci.org/eddelbuettel/digest) [![License](http://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html) [![CRAN](http://www.r-pkg.org/badges/version/digest)](https://cran.r-project.org/package=digest) [![Downloads](http://cranlogs.r-pkg.org/badges/digest?color=brightgreen)](http://www.r-pkg.org/pkg/digest) [![Code Coverage](https://img.shields.io/codecov/c/github/eddelbuettel/digest/master.svg)](https://codecov.io/gh/eddelbuettel/digest)
+## digest [![Build Status](https://travis-ci.org/eddelbuettel/digest.svg)](https://travis-ci.org/eddelbuettel/digest) [![License](http://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html) [![CRAN](http://www.r-pkg.org/badges/version/digest)](https://cran.r-project.org/package=digest) [![Downloads](http://cranlogs.r-pkg.org/badges/digest?color=brightgreen)](http://www.r-pkg.org/pkg/digest) [![Dependencies](https://tinyverse.netlify.com/badge/digest)](https://cran.r-project.org/package=digest) [![Code Coverage](https://img.shields.io/codecov/c/github/eddelbuettel/digest/master.svg)](https://codecov.io/gh/eddelbuettel/digest)
 
 Compact hash representations of arbitrary R objects
 
@@ -6,8 +6,8 @@ Compact hash representations of arbitrary R objects
 
 The digest package provides a principal function `digest()` for the 
 creation of hash digests of arbitrary R objects (using the md5, sha-1, 
-sha-256, crc32, xxhash and murmurhash algorithms) permitting easy comparison
-of R language objects.
+sha-256, crc32, xxhash, murmurhash and spookyhash algorithms) permitting 
+easy comparison of R language objects.
 
 #### Examples
 
@@ -47,7 +47,8 @@ tested) libraries such as OpenSSL should be used.
 Dirk Eddelbuettel, with contributions by Antoine Lucas, Jarek Tuszynski,
 Henrik Bengtsson, Simon Urbanek, Mario Frasca, Bryan Lewis, Murray Stokely,
 Hannes Muehleisen, Duncan Murdoch, Jim Hester, Wush Wu, Qiang Kou, Thierry
-Onkelinx, Michel Lang, Viliam Simko, Kurt Hornik and Radford Neal.
+Onkelinx, Michel Lang, Viliam Simko, Kurt Hornik, Radford Neal, and Kendon 
+Bell.
 
 ### License
 
