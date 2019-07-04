@@ -1,3 +1,55 @@
+2019-07-04  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Release 0.6.20
+
+2019-06-29  Dirk Eddelbuettel  <edd@debian.org>
+
+	* README.md: Add installation and continues testing sections
+
+	* .travis.yml (install): Use r-cran-tinytest from PPA
+
+2019-06-23  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Roll minor version
+
+	* inst/tinytest/test_num2hex.R: Quieter with sapply
+
+        * test/tinytest/test_aes.R: renamed from testAES.R
+        * test/tinytest/test_crc32.R: renamed from testCRC32.R
+        * test/tinytest/test_digest.R: renamed from testDigest.R
+        * test/tinytest/test_digest2int.R: from testDigest2Int.R
+        * test/tinytest/test_hmac.R: renamed from testHMAC.R
+        * test/tinytest/test_num2hex.R: renamed from testNum2Hex.R
+        * test/tinytest/test_raw.R: renamed from testRaw.R
+        * test/tinytest/test_sha1.R: renamed from testSHA1.R
+
+2019-06-10  Dirk Eddelbuettel  <edd@debian.org>
+
+	* inst/tinytest/testCRC32.R: Use expcect_* functions 
+        * inst/tinytest/testDigest2Int.R: Idem
+        * inst/tinytest/testNum2Hex.R: Idem
+        * inst/tinytest/testRaw.R: Idem
+
+2019-05-26  Dirk Eddelbuettel  <edd@debian.org>
+
+	* tests/tinytest.R: New test driver using tinytest
+	* DESCRIPTION (Suggests): Added tinytest
+	* .travis.yml (install): Install tinytest
+
+	* inst/tinytest/testRaw.R: Converted from tests/raw.R
+	* inst/tinytest/testCRC32.R: Converted from tests/crc32.R
+	* inst/tinytest/testDigest2Int.R: From tests/digest2int.R
+	* inst/tinytest/testNum2Hex.R: From tests/num2hexTest.R
+	* inst/tinytest/testSHA1.R: Converted from tests/sha1Test.R
+	* inst/tinytest/testHMAC.R: Converted from tests/hmacTest.R
+	* inst/tinytest/testAES.R: Converted from tests/aesTest.R
+	* inst/tinytest/testDigest.R: From tests/digestTest.R
+
+	* R/AES.R: Additional #nocov tags
+	* R/digest.R: Idem
+	* R/hmac.R: Idem
+	* R/sha1.R: Idem
+	
 2019-05-19  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Release 0.6.19

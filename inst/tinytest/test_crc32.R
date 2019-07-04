@@ -1,7 +1,8 @@
 
 ## tests for old versus new (ie guaranteed eight chars, added in 0.6.16) format for crc32
 
-stopifnot(require(digest))
+suppressMessages(library(digest))
+
 
 args <- c(0L, 51L, 126L, 8480L, 60929L, 180832L)
 
@@ -9,8 +10,7 @@ resOld <- c("b7fa0888",  "82a699e",   "4754b3",    "b3da3",     "e67c",      "87
 resNew <- c("b7fa0888", "082a699e", "004754b3", "000b3da3", "0000e67c", "00000872")
 
 options("digestOldCRC32Format" = TRUE)
-stopifnot(sapply(args, digest, algo="crc32") == resOld)
+expect_identical(sapply(args, digest, algo="crc32"), resOld)
 
 options("digestOldCRC32Format" = FALSE)
-stopifnot(sapply(args, digest, algo="crc32") == resNew)
-
+expect_identical(sapply(args, digest, algo="crc32"), resNew)
