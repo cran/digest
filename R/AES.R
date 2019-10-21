@@ -1,13 +1,32 @@
-# This is loosely modelled on the AES code from the Python Crypto package.
+##  AES -- Advanced Encryption Standard (AES) block cipher for R
+##
+##  Copyright (C) 2013 - 2019  Duncan Murdoch and Dirk Eddelbuettel
+##  Copyright (C) 2019         Ion Suruceanu
+##
+##  This file is part of digest.
+##
+##  digest is free software: you can redistribute it and/or modify
+##  it under the terms of the GNU General Public License as published by
+##  the Free Software Foundation, either version 2 of the License, or
+##  (at your option) any later version.
+##
+##  digest is distributed in the hope that it will be useful,
+##  but WITHOUT ANY WARRANTY; without even the implied warranty of
+##  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+##  GNU General Public License for more details.
+##
+##  You should have received a copy of the GNU General Public License
+##  along with digest.  If not, see <http://www.gnu.org/licenses/>.
 
-# Currently only ECB, CBC and CTR modes are supported...
+## This is loosely modelled on the AES code from the Python Crypto package.
+## Currently only ECB, CBC, CFB and CTR modes are supported...
 
 modes <- c("ECB", "CBC", "CFB", "PGP", "OFB", "CTR", "OPENPGP")
 
-AES <- function(key, mode=c("ECB", "CBC", "CTR"), IV=NULL) {
+AES <- function(key, mode=c("ECB", "CBC", "CFB", "CTR"), IV=NULL) {
     mode <- match(match.arg(mode), modes)
-    if (!(mode %in% c(1:2, 6)))
-        stop("Only ECB, CBC and CTR mode encryption are supported.")	# #nocov
+    if (!(mode %in% c(1:3, 6)))
+        stop("Only ECB, CBC, CFB and CTR mode encryption are supported.")	# #nocov
 
     key <- as.raw(key)
     IV <- as.raw(IV)
@@ -31,6 +50,24 @@ AES <- function(key, mode=c("ECB", "CBC", "CTR"), IV=NULL) {
                 ind <- (i-1)*16 + 1:16
                 IV <<- .Call(AESencryptECB, context, xor(text[ind], IV))
                 result[ind] <- IV
+            }
+            result
+        } else if (mode == 3) {
+            if (length(IV) != block_size) {
+                stop("IV length must equal block size")
+            }
+            result <- raw(length(text))
+            blocks <- split(text, ceiling(seq_along(text)/block_size))
+            i <- 0
+            for (b in blocks) {
+                if (block_size == length(IV)) {
+                    out <- .Call(AESencryptECB, context, IV)
+                }
+                len <- length(b)
+                ind <- i*length(IV)+1:len
+                i <- i + 1
+                result[ind] <- xor(b, out[0:len])
+                IV <<- result[ind]
             }
             result
         } else if (mode == 6) {
@@ -67,6 +104,24 @@ AES <- function(key, mode=c("ECB", "CBC", "CTR"), IV=NULL) {
                 result[ind] <- xor(res, IV)
                 IV <<- ciphertext[ind]
             }
+        } else if (mode == 3) {
+            if (length(IV) != block_size) {
+                stop("IV length must equal block size")
+            }
+            result <- raw(length(ciphertext))
+            blocks <- split(ciphertext, ceiling(seq_along(ciphertext)/block_size))
+            i <- 0
+            for (b in blocks) {
+                if (block_size == length(IV)) {
+                    out <- .Call(AESencryptECB, context, IV)
+                }
+                len <- length(b)
+                ind <- i*length(IV)+1:len
+                i <- i + 1
+                result[ind] <- xor(b, out[0:len])
+                IV <<- b
+            }
+
         } else if (mode == 6)
               result <- encrypt(ciphertext)
 

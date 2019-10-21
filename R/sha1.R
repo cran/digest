@@ -1,3 +1,25 @@
+
+##  sha1 -- SHA1 hash generation for R
+##
+##  Copyright (C) 2015 - 2019  Thierry Onkelinx and Dirk Eddelbuettel
+##  Copyright (C) 2016 - 2019  Viliam Simko
+##
+##  This file is part of digest.
+##
+##  digest is free software: you can redistribute it and/or modify
+##  it under the terms of the GNU General Public License as published by
+##  the Free Software Foundation, either version 2 of the License, or
+##  (at your option) any later version.
+##
+##  digest is distributed in the hope that it will be useful,
+##  but WITHOUT ANY WARRANTY; without even the implied warranty of
+##  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+##  GNU General Public License for more details.
+##
+##  You should have received a copy of the GNU General Public License
+##  along with digest.  If not, see <http://www.gnu.org/licenses/>.
+
+
 # functions written by Thierry Onkelinx
 sha1 <- function(x, digits = 14L, zapsmall = 7L, ..., algo = "sha1"){
     UseMethod("sha1")
@@ -256,16 +278,20 @@ num2hex <- function(x, digits = 14L, zapsmall = 7L){
     if (all(x.na)) {
         return(x)
     }
-    output <- rep(NA, length(x))
+    x.inf <- is.infinite(x)
+    output <- rep(NA_character_, length(x))
+    output[x.inf & x > 0] <- "Inf"
+    output[x.inf & x < 0] <- "-Inf"
+    x.finite <- !x.na & !x.inf
 
-    x.hex <- sprintf("%a", x[!x.na])
+    x.hex <- sprintf("%a", x[x.finite])
     exponent <- as.integer(gsub("^.*p", "", x.hex))
 
     # detect "small" numbers
     zapsmall.hex <- floor(log2(10 ^ -zapsmall))
     zero <- x.hex == sprintf("%a", 0) | exponent <= zapsmall.hex
     if (any(zero)) {
-        output[!x.na][zero] <- "0"
+        output[x.finite][zero] <- "0"
         if (all(zero)) {
             return(output)
         }
@@ -281,7 +307,7 @@ num2hex <- function(x, digits = 14L, zapsmall = 7L){
     # remove potential trailing zero's
     mantissa <- gsub(mantissa, pattern = "0*$", replacement = "")
     negative <- ifelse(grepl(x.hex[!zero], pattern = "^-"), "-", "")
-    output[!x.na][!zero] <- paste0(negative, mantissa, " ", exponent[!zero])
+    output[x.finite][!zero] <- paste0(negative, mantissa, " ", exponent[!zero])
     return(output)
 }
 
@@ -352,4 +378,30 @@ sha1.raw <- function(x, digits = 14L, zapsmall = 7L, ..., algo = "sha1") {
         x = x, digits = digits, zapsmall = zapsmall, algo = algo, ...
     )
     digest(x, algo = algo)
+}
+
+sha1.formula <- function(x, digits = 14L, zapsmall = 7L, ..., algo = "sha1"){
+    dots <- list(...)
+    if (is.null(dots$environment)) {
+        dots$environment <- TRUE
+    }
+    y <- vapply(
+        x,
+        sha1,
+        digits = digits,
+        zapsmall = zapsmall,
+        ... = dots,
+        algo = algo,
+        FUN.VALUE = NA_character_
+    )
+    if (isTRUE(dots$environment)) {
+        y <- c(
+            y,
+            digest(environment(x), algo = algo)
+        )
+    }
+    attr(y, "digest::sha1") <- attr_sha1(
+        x = x, digits = digits, zapsmall = zapsmall, algo = algo, ...
+    )
+    digest(y, algo = algo)
 }

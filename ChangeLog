@@ -1,3 +1,63 @@
+2019-10-21  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Release 0.6.22
+
+2019-10-20  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Roll minor version
+
+	* inst/tinytest/test_misc.R: File split off test_digest.R
+
+2019-10-19  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION: Add Ion and Bill to Authors
+	* README.md: Idem
+
+2019-10-13  Jim Hester <james.f.hester@gmail.com>
+
+	* src/digest.c: Add support for UTF-8 file paths on Windows
+	* R/digest.R: Idem
+	* inst/tinytest/test_encoding.R: Add tests for UTF-8 file paths.
+
+2019-10-13  Bill Denney <wdenney@humanpredictions.com>
+
+	* R/sha1.R: Add sha1.formula()
+	* NAMESPACE: Idem
+	* man/sha1.rd: Idem
+	* inst/tinytest/test_sha1.R: Add tests for sha1.formula()
+
+2019-10-12  Bill Denney <wdenney@humanpredictions.com>
+
+	* R/sha1.R: Fix issue with num2hex() and input of Inf
+	* inst/tinytest/test_sha1.R: Add Inf to the tests
+
+2019-10-05  Dirk Eddelbuettel  <edd@debian.org>
+
+	* DESCRIPTION (Version, Date): Roll minor version
+
+	* man/digest.Rd: Change three URL references to https
+	* man/hmac.Rd: Ditto
+
+	* R/utils.R: Move back functions used by digest() + makeVDigest()
+
+	* R/AES.R: Added copyright header
+	* R/digest.R: Idem
+	* R/hmac.R: Idem
+	* R/sha1.R: Idem
+	* R/vdigest.R: Idem
+
+2019-10-02  Ion Suruceanu  <ion.suruceanu@gapsquare.com>
+
+	* R/AES.R: Add support for CFB cipher mode
+	* man/AES.Rd: Add documentation
+	* inst/tinytest/test_aes.R: Add tests
+	
+2019-09-20  Matthew de Queljoe <matthew.dequeljoe@gmail.com>
+
+	* R/digest.R: refactor digest function
+	* R/vdigest.R: remove helper functions from file
+	* R/utils.R: new file to hold helper functions
+
 2019-09-19  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Release 0.6.21
@@ -5,15 +65,15 @@
 2019-09-18  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Roll minor version
-	
+
 	* DESCRIPTION (Author): Add Matthew
 	* README.md (Author): Ditto
-	
+
 	* demo/vectorised.R: Add demo (based on Matthew's PR)
 
 	* R/vdigest.R: Added a handful of #nocov tags
 	* man/vdigest.Rd: Break up two long lines
-	
+
 2019-09-17  Matthew de Queljoe <matthew.dequeljoe@gmail.com>
 
 	* src/digest.c: Add vectorised digest function
@@ -21,7 +81,7 @@
 	* man/vdigest.Rd: Add documentation
 	* NAMESPACE: Export new function getVDigest
 	* inst/tinytest/test_digest.R: Add tests
-	
+
 2019-07-04  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Release 0.6.20
@@ -49,7 +109,7 @@
 
 2019-06-10  Dirk Eddelbuettel  <edd@debian.org>
 
-	* inst/tinytest/testCRC32.R: Use expcect_* functions 
+	* inst/tinytest/testCRC32.R: Use expcect_* functions
         * inst/tinytest/testDigest2Int.R: Idem
         * inst/tinytest/testNum2Hex.R: Idem
         * inst/tinytest/testRaw.R: Idem
@@ -73,7 +133,7 @@
 	* R/digest.R: Idem
 	* R/hmac.R: Idem
 	* R/sha1.R: Idem
-	
+
 2019-05-19  Dirk Eddelbuettel  <edd@debian.org>
 
 	* DESCRIPTION (Version, Date): Release 0.6.19

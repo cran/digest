@@ -1,4 +1,23 @@
 
+##  vdigest -- Vectorist digest functions for R
+##
+##  Copyright (C) 2019         Matthew de Queljoe and Dirk Eddelbuettel
+##
+##  This file is part of digest.
+##
+##  digest is free software: you can redistribute it and/or modify
+##  it under the terms of the GNU General Public License as published by
+##  the Free Software Foundation, either version 2 of the License, or
+##  (at your option) any later version.
+##
+##  digest is distributed in the hope that it will be useful,
+##  but WITHOUT ANY WARRANTY; without even the implied warranty of
+##  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+##  GNU General Public License for more details.
+##
+##  You should have received a copy of the GNU General Public License
+##  along with digest.  If not, see <http://www.gnu.org/licenses/>.
+
 getVDigest <- function(algo = c("md5", "sha1", "crc32", "sha256", "sha512",
                                  "xxhash32", "xxhash64", "murmur32", "spookyhash"),
                         errormode=c("stop","warn","silent")){
@@ -153,55 +172,4 @@ serialize_ <- function(object, ...){
     if (length(object))
         return(lapply(object, base::serialize, ...))
     base::serialize(object, ...)
-}
-
-.errorhandler <- function(txt, obj="", mode="stop") {
-    if (mode == "stop") {                                                                # nocov start
-        stop(txt, obj, call.=FALSE)
-    } else if (mode == "warn") {
-        warning(txt, obj, call.=FALSE)
-        return(invisible(NA))
-    } else {
-        return(invisible(NULL))                                                          # nocov end
-    }
-}
-
-algo_int <- function(algo)
-    switch(
-        algo,
-        md5 = 1,
-        sha1 = 2,
-        crc32 = 3,
-        sha256 = 4,
-        sha512 = 5,
-        xxhash32 = 6,
-        xxhash64 = 7,
-        murmur32 = 8,
-        spookyhash = 9
-    )
-
-## HB 14 Mar 2007:
-## Exclude serialization header (non-data dependent bytes but R
-## version specific).  In ASCII, the header consists of for rows
-## ending with a newline ('\n').  We need to skip these.
-## The end of 4th row is *typically* within the first 18 bytes
-set_skip <- function(object, ascii){
-    if (!ascii)
-        return(14)
-    ## Was: skip <- if (ascii) 18 else 14
-    which(object[1:30] == as.raw(10))[4]         					# nocov
-}
-
-check_file <- function(object, errormode){
-    if (!file.exists(object)) {
-        return(.errorhandler("The file does not exist: ", object, mode=errormode)) 	# nocov start
-    }
-    if (!isTRUE(!file.info(object)$isdir)) {
-        return(.errorhandler("The specified pathname is not a file: ",
-                             object, mode=errormode))
-    }
-    if (file.access(object, 4)) {
-        return(.errorhandler("The specified file is not readable: ",
-                             object, mode=errormode))                  			# #nocov end
-    }
 }
