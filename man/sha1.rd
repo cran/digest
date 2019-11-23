@@ -1,6 +1,8 @@
 \docType{methods}
 \name{sha1}
 \alias{sha1}
+\alias{sha1_attr_digest}
+\alias{sha1_digest}
 \alias{sha1.array}
 \alias{sha1.integer}
 \alias{sha1.numeric}
@@ -22,31 +24,38 @@
 \alias{sha1.call}
 \alias{sha1.raw}
 \alias{sha1.formula}
+\alias{sha1.(}
 \title{Calculate a SHA1 hash of an object}
 \author{Thierry Onkelinx}
 \usage{
 sha1(x, digits = 14, zapsmall = 7, ..., algo = "sha1")
-\method{sha1}{integer}(x, digits = 14, zapsmall = 7, ..., algo = "sha1")
 \method{sha1}{numeric}(x, digits = 14, zapsmall = 7, ..., algo = "sha1")
-\method{sha1}{character}(x, digits = 14, zapsmall = 7, ..., algo = "sha1")
-\method{sha1}{factor}(x, digits = 14, zapsmall = 7, ..., algo = "sha1")
 \method{sha1}{complex}(x, digits = 14, zapsmall = 7, ..., algo = "sha1")
 \method{sha1}{Date}(x, digits = 14, zapsmall = 7, ..., algo = "sha1")
-\method{sha1}{NULL}(x, digits = 14, zapsmall = 7, ..., algo = "sha1")
-\method{sha1}{logical}(x, digits = 14, zapsmall = 7, ..., algo = "sha1")
 \method{sha1}{matrix}(x, digits = 14, zapsmall = 7, ..., algo = "sha1")
 \method{sha1}{data.frame}(x, digits = 14, zapsmall = 7, ..., algo = "sha1")
 \method{sha1}{array}(x, digits = 14, zapsmall = 7, ..., algo = "sha1")
 \method{sha1}{list}(x, digits = 14, zapsmall = 7, ..., algo = "sha1")
 \method{sha1}{pairlist}(x, digits = 14, zapsmall = 7, ..., algo = "sha1")
-\method{sha1}{name}(x, digits = 14, zapsmall = 7, ..., algo = "sha1")
 \method{sha1}{POSIXlt}(x, digits = 14, zapsmall = 7, ..., algo = "sha1")
 \method{sha1}{POSIXct}(x, digits = 14, zapsmall = 7, ..., algo = "sha1")
 \method{sha1}{anova}(x, digits = 4, zapsmall = 7, ..., algo = "sha1")
 \method{sha1}{function}(x, digits = 14, zapsmall = 7, ..., algo = "sha1")
-\method{sha1}{call}(x, digits = 14, zapsmall = 7, ..., algo = "sha1")
-\method{sha1}{raw}(x, digits = 14, zapsmall = 7, ..., algo = "sha1")
+
 \method{sha1}{formula}(x, digits = 14, zapsmall = 7, ..., algo = "sha1")
+\method{sha1}{`(`}(...)
+
+sha1_digest(x, digits = 14, zapsmall = 7, ..., algo = "sha1")
+\method{sha1}{NULL}(...)
+\method{sha1}{name}(...)
+
+sha1_attr_digest(x, digits = 14, zapsmall = 7, ..., algo = "sha1")
+\method{sha1}{call}(...)
+\method{sha1}{character}(...)
+\method{sha1}{factor}(...)
+\method{sha1}{integer}(...)
+\method{sha1}{logical}(...)
+\method{sha1}{raw}(...)
 }
 \arguments{
 \item{x}{the object to calculate the SHA1}
@@ -59,7 +68,8 @@ sha1.anova where \code{digits = 4}}
 digit. Will be converted to a base 2 equivalent. Values smaller than this
 number are equivalent to 0. Defaults to \code{zapsmall = 7}}
 
-\item{...}{Ignored in most methods. See Details for usage}
+\item{...}{If it is the only defined argument, passed to another \code{sha1}
+method.  If other arguments exist, see Details for usage.}
 
 \item{algo}{The hashing algoritm to be used by \code{\link{digest}}. Defaults to
 "sha1"}
@@ -73,6 +83,13 @@ current defaults keep \code{digits} and \code{zapsmall} as large as possible
 while maintaining the same hash on 32 bit and 64 bit systems.
 }
 \details{
+\code{sha1_digest()} is a convenience function for objects where attributes
+cannot be added to apply the \code{digest()} function to its arguments.
+\code{sha1_attr_digest()} is a convenience function for objects where objects
+can be added to generate the hash.  If generating hashes for objects in other
+packages, one of these two functions is recommended for use (typically,
+\code{sha1_attr_digest()}).
+
 Extra arguments:
 
 environment: An optional extra argument for \code{sha1.function} and
@@ -87,4 +104,8 @@ hashes created with \code{sha1(x)} from digest >= 0.6.15 are identical to
 \code{sha1(x)} from digest <= 0.6.14. The only exceptions are hashes created
 with \code{sha1(x, algo = "sha1")}, they will be different starting from digest
 0.6.15
+
+Until version 0.6.22, \code{sha1} ignored the attributes of the object for
+some classes. This was fixed in version 0.6.23. Use
+\code{option(sha1PackageVersion = 0.6.22)} to get the old behaviour.
 }
