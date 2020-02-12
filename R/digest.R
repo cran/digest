@@ -38,8 +38,6 @@ digest <- function(object, algo=c("md5", "sha1", "crc32", "sha256", "sha512",
     algo <- match.arg(algo)
     errormode <- match.arg(errormode)
 
-    isWindows <- Sys.info()[["sysname"]] == "Windows"
-
     if (is.infinite(length)) {
         length <- -1               # internally we use -1 for infinite len
     }
@@ -60,7 +58,7 @@ digest <- function(object, algo=c("md5", "sha1", "crc32", "sha256", "sha512",
     if (serialize && !file) {
         if(algo %in% non_streaming_algos){
             ## support the 'nosharing' option in pqR's base::serialize()
-            object <- if ("nosharing" %in% names(formals(base::serialize)))
+            object <- if (.hasNoSharing())
                 base::serialize (object, connection=NULL, ascii=ascii,
                                  nosharing=TRUE, version=serializeVersion)
             else
@@ -93,7 +91,7 @@ digest <- function(object, algo=c("md5", "sha1", "crc32", "sha256", "sha512",
     if (file) {
         algoint <- algoint+100
         object <- path.expand(object)
-        if (isWindows) object <- enc2utf8(object)
+        if (.isWindows()) object <- enc2utf8(object)
         check_file(object, errormode)
     }
     ## if skip is auto (or any other text for that matter), we just turn it
