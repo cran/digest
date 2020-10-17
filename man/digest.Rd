@@ -14,7 +14,8 @@
 }
 \usage{
 digest(object, algo=c("md5", "sha1", "crc32", "sha256", "sha512",
-       "xxhash32", "xxhash64", "murmur32", "spookyhash"), serialize=TRUE, file=FALSE,
+                      "xxhash32", "xxhash64", "murmur32", "spookyhash",
+                      "blake3"), serialize=TRUE, file=FALSE,
        length=Inf, skip="auto", ascii=FALSE, raw=FALSE, seed=0,
        errormode=c("stop","warn","silent"),
        serializeVersion=.getSerializeVersion())
@@ -26,7 +27,7 @@ digest(object, algo=c("md5", "sha1", "crc32", "sha256", "sha512",
   \item{algo}{The algorithms to be used; currently available choices are
     \code{md5}, which is also the default, \code{sha1}, \code{crc32},
     \code{sha256}, \code{sha512}, \code{xxhash32}, \code{xxhash64},
-    \code{murmur32} and \code{spookyhash}.}
+    \code{murmur32}, \code{spookyhash} and \code{blake3}.}
   \item{serialize}{A logical variable indicating whether the object
     should be serialized using \code{serialize} (in ASCII
     form). Setting this to \code{FALSE} allows to compare the digest
@@ -95,12 +96,14 @@ digest(object, algo=c("md5", "sha1", "crc32", "sha256", "sha512",
   that integrates R's serialization directly with the algorithm allowing for
   memory-efficient incremental calculation of the hash is by Gabe Becker.
 
+  For blake3, the C implementation by Samuel Neves and Jack O'Connor is used.
+
   Please note that this package is not meant to be used for
   cryptographic purposes for which more comprehensive (and widely
   tested) libraries such as OpenSSL should be used. Also, it is known
   that crc32 is not collision-proof. For sha-1, recent results indicate
   certain cryptographic weaknesses as well. For more details, see for example
-  \url{http://www.schneier.com/blog/archives/2005/02/cryptanalysis_o.html}.
+  \url{https://www.schneier.com/blog/archives/2005/02/cryptanalysis_o.html}.
 }
 \section{Change Management}{
   Version 0.6.16 of digest corrects an error in which \code{crc32} was not
@@ -110,7 +113,7 @@ digest(object, algo=c("md5", "sha1", "crc32", "sha256", "sha512",
   consistent with prior version (but not be consistentnly eight characters).
 }
 \references{
-  MD5: \url{http://www.ietf.org/rfc/rfc1321.txt}.
+  MD5: \url{https://www.ietf.org/rfc/rfc1321.txt}.
 
   SHA-1: \url{https://en.wikipedia.org/wiki/SHA-1}.
   SHA-256: \url{https://csrc.nist.gov/publications/fips/fips180-2/fips180-2withchangenotice.pdf}.
@@ -119,7 +122,7 @@ digest(object, algo=c("md5", "sha1", "crc32", "sha256", "sha512",
   \url{https://en.wikipedia.org/wiki/Cyclic_redundancy_check} for
   general information on CRC algorithms.
 
-  \url{https://www.aarongifford.com/computers/sha.html} for the
+  \url{https://aarongifford.com/computers/sha.html} for the
   integrated C implementation of sha-512.
 
   The page for the code underlying the C functions used here for sha-1
@@ -139,6 +142,9 @@ digest(object, algo=c("md5", "sha1", "crc32", "sha256", "sha512",
   \url{https://github.com/aappleby/smhasher} for documentation on MurmurHash.
 
   \url{https://burtleburtle.net/bob/hash/spooky.html} for the original source code of SpookyHash.
+
+  \url{https://github.com/BLAKE3-team/BLAKE3/} for the original source code of blake3.
+
 }
 \author{Dirk Eddelbuettel \email{edd@debian.org} for the \R interface;
   Antoine Lucas for the integration of crc32; Jarek Tuszynski for the
@@ -292,6 +298,22 @@ for (i in seq(along=spookyInput)) {
     spooky <- digest(spookyInput[i], algo="spookyhash", skip = 30)
     cat(spooky, "\n")
     stopifnot(identical(spooky, spookyOutput[i]))
+}
+
+## blake3 example
+blake3Input <-
+    c("abc",
+      "abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq",
+      "")
+blake3Output <-
+    c("6437b3ac38465133ffb63b75273a8db548c558465d79db03fd359c6cd5bd9d85",
+      "c19012cc2aaf0dc3d8e5c45a1b79114d2df42abb2a410bf54be09e891af06ff8",
+      "af1349b9f5f9a1a6a0404dea36dcc9499bcb25c9adc112b7cc9a93cae41f3262")
+
+for (i in seq(along=blake3Input)) {
+    blake3 <- digest(blake3Input[i], algo="blake3", serialize=FALSE)
+    cat(blake3, "\n")
+    stopifnot(identical(blake3, blake3Output[i]))
 }
 
 # example of a digest of a standard R list structure

@@ -3,12 +3,14 @@
 [![Build Status](https://travis-ci.org/eddelbuettel/digest.svg)](https://travis-ci.org/eddelbuettel/digest) 
 [![License](http://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html) 
 [![CRAN](http://www.r-pkg.org/badges/version/digest)](https://cran.r-project.org/package=digest) 
-[![Dependencies](https://tinyverse.netlify.com/badge/digest)](https://cran.r-project.org/package=digest)  
-[![Downloads](http://cranlogs.r-pkg.org/badges/digest?color=brightgreen)](http://www.r-pkg.org/pkg/digest) 
+[![Dependencies](https://tinyverse.netlify.com/badge/digest)](https://cran.r-project.org/package=digest)
+[![Debian package](https://img.shields.io/debian/v/r-cran-digest/sid?color=green)](https://packages.debian.org/sid/r-cran-digest)  
+[![Downloads](http://cranlogs.r-pkg.org/badges/digest?color=brightgreen)](https://www.r-pkg.org:443/pkg/digest) 
 [![CRAN use](https://jangorecki.gitlab.io/rdeps/digest/CRAN_usage.svg?sanitize=true)](https://cran.r-project.org/package=digest)
 [![CRAN indirect](https://jangorecki.gitlab.io/rdeps/digest/indirect_usage.svg?sanitize=true)](https://cran.r-project.org/package=digest)
 [![BioConductor use](https://jangorecki.gitlab.io/rdeps/digest/BioC_usage.svg?sanitize=true)](https://cran.r-project.org/package=digest)
-[![Code Coverage](https://img.shields.io/codecov/c/github/eddelbuettel/digest/master.svg)](https://codecov.io/gh/eddelbuettel/digest)
+[![Code Coverage](https://img.shields.io/codecov/c/github/eddelbuettel/digest/master.svg)](https://codecov.io/gh/eddelbuettel/digest)  
+[![Documentation](https://img.shields.io/badge/documentation-is_here-blue)](https://eddelbuettel.github.io/digest/)
 
 Compact hash representations of arbitrary R objects
 
@@ -16,8 +18,8 @@ Compact hash representations of arbitrary R objects
 
 The digest package provides a principal function `digest()` for the 
 creation of hash digests of arbitrary R objects (using the md5, sha-1, 
-sha-256, crc32, xxhash, murmurhash, and spookyhash algorithms) permitting 
-easy comparison of R language objects.
+sha-256, crc32, xxhash, murmurhash, spookyhash and blake3 algorithms)
+permitting easy comparison of R language objects.
 
 #### Examples
 
@@ -77,8 +79,10 @@ at any later point.
 Dirk Eddelbuettel, with contributions by Antoine Lucas, Jarek Tuszynski,
 Henrik Bengtsson, Simon Urbanek, Mario Frasca, Bryan Lewis, Murray Stokely,
 Hannes Muehleisen, Duncan Murdoch, Jim Hester, Wush Wu, Qiang Kou, Thierry
-Onkelinx, Michel Lang, Viliam Simko, Kurt Hornik, Radford Neal, Kendon Bell, 
-Matthew de Queljoe, Ion Suruceanu, and Bill Denney.
+Onkelinx, Michel Lang, Viliam Simko, Kurt Hornik, Radford Neal, Kendon Bell,
+Matthew de Queljoe, Ion Suruceanu, Bill Denney, Dirk Schumacher, and Winston
+Chang.
+
 
 ### License
 
