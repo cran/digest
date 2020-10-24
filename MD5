@@ -1,5 +1,5 @@
-4daf912e1fec73bb44f7b89c9f583892 *ChangeLog
-c3098e1f35179c40b4655a9fe547e024 *DESCRIPTION
+7832ea9b03c0220978b752dd512b91fe *ChangeLog
+bca5aed044851cff3721b907a410b914 *DESCRIPTION
 14402ee218da75987f233d61fa84ab8d *NAMESPACE
 82c734f29cbd8b0e29893316d3d5a480 *R/AES.R
 82f716f31c280b6ed497d65744547a96 *R/digest.R
@@ -17,7 +17,7 @@ cdd17dda453ee280bdbaac3b405874d6 *demo/00Index
 b234ee4d69f5fce4486a80fdaf4a4263 *inst/GPL-2
 e6dfa6dd02e6629409e8309d1a3765df *inst/doc/sha1.R
 2d671c998321d0cd98dffcfb18ae992f *inst/doc/sha1.Rmd
-cd128da498ffdfc2f1e1011278f425a4 *inst/doc/sha1.html
+7225013804cf54f6a63e9974fe27227e *inst/doc/sha1.html
 82a62fb6337a2be9ae069fee3d50b614 *inst/include/pmurhashAPI.h
 4d75623e0ffe3c04eac1752b7d3d8f6b *inst/tinytest/test_aes.R
 f930ce5c1f9bbcd3b6fe97fd7b5b27f8 *inst/tinytest/test_blake3.R
@@ -45,7 +45,7 @@ a529d657388750546c7e03442eb01c31 *src/aes.c
 12398d282dd19894ed5548fc55fff7c4 *src/aes.h
 90974df9d6984b6a4f06aae3d75bbe6a *src/blake3.c
 23350b7351de5b42a6aff1bbeadd4338 *src/blake3.h
-83eb97ca6e2f137dfcd32a7ac103bc9f *src/blake3_dispatch.c
+5d44f6c6e0e8333b0d343beba8c4f772 *src/blake3_dispatch.c
 653116045f28590f7408b41ee0d9b152 *src/blake3_impl.h
 ceb8de8ba5e178fef7ed7964ae300ee4 *src/blake3_portable.c
 2cb721d135ea8eec6aeceedcd26706e5 *src/crc32.c
