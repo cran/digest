@@ -1,5 +1,5 @@
-2fc0e3940421860e55a9109374870a86 *ChangeLog
-3ed4e0c8fb5b7926ffcf7bf560777ea8 *DESCRIPTION
+2f5c12dc8491281311f78c5af3298dcf *ChangeLog
+8a20449adae9ff6dd78b5eb224394ecd *DESCRIPTION
 14402ee218da75987f233d61fa84ab8d *NAMESPACE
 82c734f29cbd8b0e29893316d3d5a480 *R/AES.R
 82f716f31c280b6ed497d65744547a96 *R/digest.R
@@ -10,13 +10,13 @@ b2f7b3b1b1d0f9da2e62a57aab863601 *R/init.R
 d7ca1ce5d34263179fd46b4992e70fb0 *R/vdigest.R
 a673761518607ae09b8f6357c6304c60 *R/zzz.R
 17c07684899ec251f1c18785c32b4bc2 *README.md
-44e7d30ab5a91d849e5fee71c6e03370 *build/vignette.rds
+d2c4ac5e12e4ef52854ca9f5c371aaaf *build/vignette.rds
 b47a60fc7c78d503aba2c3af8d8f3d9a *cleanup
 cdd17dda453ee280bdbaac3b405874d6 *demo/00Index
 247a7f1a523cb39feb2941b00b82906a *demo/vectorised.R
 b234ee4d69f5fce4486a80fdaf4a4263 *inst/GPL-2
 0473d4bde070176922b60166512ee4e7 *inst/doc/sha1.R
-2bafc9dc174d4c0c7a4f997c4e38ab22 *inst/doc/sha1.html
+ce27aa99ef6a1c3519f898ae6bd0f750 *inst/doc/sha1.html
 6b37c59ba0b533a23e48589c49be6851 *inst/doc/sha1.md
 82a62fb6337a2be9ae069fee3d50b614 *inst/include/pmurhashAPI.h
 4d75623e0ffe3c04eac1752b7d3d8f6b *inst/tinytest/test_aes.R
@@ -48,7 +48,7 @@ a529d657388750546c7e03442eb01c31 *src/aes.c
 5d44f6c6e0e8333b0d343beba8c4f772 *src/blake3_dispatch.c
 653116045f28590f7408b41ee0d9b152 *src/blake3_impl.h
 ceb8de8ba5e178fef7ed7964ae300ee4 *src/blake3_portable.c
-2cb721d135ea8eec6aeceedcd26706e5 *src/crc32.c
+8eecbbc3edfec9fd8b0ee3209c1b924f *src/crc32.c
 4d1cfa258e52f3f91b09afdba248fec5 *src/crc32.h
 3b9024c395fc1ff4b960d28d8191daa9 *src/digest.c
 dc3762ab113fccd9ae068ae763906c89 *src/digest2int.c
@@ -60,7 +60,7 @@ dc3762ab113fccd9ae068ae763906c89 *src/digest2int.c
 64d967be5b5ec3024bf284dede078d48 *src/raes.c
 2501b53d87d8f7e46cdbfe7b4f132643 *src/sha1.c
 7cf279b5c8a6743e49a2c37d105733f5 *src/sha1.h
-5c39551f3c33f278cdcb27f82987afd2 *src/sha2.c
+c320b4628947353a4b1040458e04642c *src/sha2.c
 8cb23ad7160a7a9faf1f3b2b6ed3c6bc *src/sha2.h
 c8089bc1a0cda904888249da6af7f29c *src/sha256.c
 82a758ff49a4a2c5dfc82852d57f9a44 *src/sha256.h
