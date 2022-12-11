@@ -1,5 +1,5 @@
-2f5c12dc8491281311f78c5af3298dcf *ChangeLog
-8a20449adae9ff6dd78b5eb224394ecd *DESCRIPTION
+11c91d63430944c86e21f8cb2da8c513 *ChangeLog
+0fea305d4b4f164c65dd38fa32385fa5 *DESCRIPTION
 14402ee218da75987f233d61fa84ab8d *NAMESPACE
 82c734f29cbd8b0e29893316d3d5a480 *R/AES.R
 82f716f31c280b6ed497d65744547a96 *R/digest.R
@@ -10,7 +10,7 @@ b2f7b3b1b1d0f9da2e62a57aab863601 *R/init.R
 d7ca1ce5d34263179fd46b4992e70fb0 *R/vdigest.R
 a673761518607ae09b8f6357c6304c60 *R/zzz.R
 17c07684899ec251f1c18785c32b4bc2 *README.md
-d2c4ac5e12e4ef52854ca9f5c371aaaf *build/vignette.rds
+a94350a5b0c5ebefcac5fb800202778b *build/vignette.rds
 b47a60fc7c78d503aba2c3af8d8f3d9a *cleanup
 cdd17dda453ee280bdbaac3b405874d6 *demo/00Index
 247a7f1a523cb39feb2941b00b82906a *demo/vectorised.R
@@ -50,7 +50,7 @@ a529d657388750546c7e03442eb01c31 *src/aes.c
 ceb8de8ba5e178fef7ed7964ae300ee4 *src/blake3_portable.c
 8eecbbc3edfec9fd8b0ee3209c1b924f *src/crc32.c
 4d1cfa258e52f3f91b09afdba248fec5 *src/crc32.h
-3b9024c395fc1ff4b960d28d8191daa9 *src/digest.c
+296b7ba951c8152f960ee1307b77fcbe *src/digest.c
 dc3762ab113fccd9ae068ae763906c89 *src/digest2int.c
 05344eb938698407395c04bf91c9c150 *src/init.c
 972a4374ab3e726afbab89332562daf2 *src/md5.c
