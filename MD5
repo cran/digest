@@ -1,5 +1,5 @@
-d1608a2505b91c01300b72b38024c542 *ChangeLog
-2aef152eb7df317e0920a219cd854ce1 *DESCRIPTION
+ea347ba570f65b32d87a167214caeea4 *ChangeLog
+e45a6dfa925d30482d7ed1915075f56d *DESCRIPTION
 14402ee218da75987f233d61fa84ab8d *NAMESPACE
 3af8a593fcd744f27b2f1c96703b4086 *R/AES.R
 5cdf9ffeccabac4146d01f46486d9874 *R/digest.R
@@ -9,7 +9,7 @@ db9e769e83f9c108e97ce8eb8dd7e825 *R/init.R
 14cddbd8465ff30bec5a355855130888 *R/sha1.R
 eb800ca67b8772a16154be453f36ba74 *R/vdigest.R
 a673761518607ae09b8f6357c6304c60 *R/zzz.R
-8c32069ff7257f17afa09c09e081306e *README.md
+fa2693d0698d9a7c97b4e83a3c78925c *README.md
 6fc602e0daca88c974d870cc0054b143 *build/vignette.rds
 b47a60fc7c78d503aba2c3af8d8f3d9a *cleanup
 cdd17dda453ee280bdbaac3b405874d6 *demo/00Index
@@ -53,7 +53,7 @@ ceb8de8ba5e178fef7ed7964ae300ee4 *src/blake3_portable.c
 4d1cfa258e52f3f91b09afdba248fec5 *src/crc32.h
 dd634d9edc40fba14ace4af5a083ed18 *src/crc32c.cpp
 51ca266871968cf71820b241bdb27ecc *src/crc32c.h
-c9cf465beb0a72cd6c83569e33b59d24 *src/crc32c/crc32c_config.h
+9173588aa634f1fca88baf44fe4abf5c *src/crc32c/crc32c_config.h
 11ec70bd87cb4b8871625eebea7474e0 *src/crc32c/crc32c_internal.h
 c54ed3e558bdf85c3fc5b2ad51366983 *src/crc32c/crc32c_prefetch.h
 eb57fc780cb7319f9450a0b2b2e1d367 *src/crc32c/crc32c_read_le.h

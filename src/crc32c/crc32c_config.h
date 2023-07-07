@@ -5,14 +5,20 @@
 #ifndef CRC32C_CRC32C_CONFIG_H_
 #define CRC32C_CRC32C_CONFIG_H_
 
-// Define to 1 if building for a big-endian platform.
+// Define to 1 if building for a big-endian platform and conditions met ... else 0 for little endian
+#if defined(__BYTE_ORDER__) && defined(__ORDER_BIG_ENDIAN__) && (__BYTE_ORDER__ == __ORDER_BIG_ENDIAN__)
+#define BYTE_ORDER_BIG_ENDIAN 1
+#else
 #define BYTE_ORDER_BIG_ENDIAN 0
+#endif
 
 // Define to 1 if the compiler has the __builtin_prefetch intrinsic.
-#define HAVE_BUILTIN_PREFETCH 1
+// edd 2023-06-26  Set to 0 for maximum portability
+#define HAVE_BUILTIN_PREFETCH 0
 
 // Define to 1 if targeting X86 and the compiler has the _mm_prefetch intrinsic.
-#define HAVE_MM_PREFETCH 1
+// edd 2023-06-26  Set to 0 for maximum portability
+#define HAVE_MM_PREFETCH 0
 
 // Define to 1 if targeting X86 and the compiler has the _mm_crc32_u{8,32,64}
 // intrinsics.
