@@ -1,5 +1,5 @@
-ea347ba570f65b32d87a167214caeea4 *ChangeLog
-e45a6dfa925d30482d7ed1915075f56d *DESCRIPTION
+f8fd3f848904cc4bd1ddb68cd312258e *ChangeLog
+01c128882e2ad8b5388ae592caa6525b *DESCRIPTION
 14402ee218da75987f233d61fa84ab8d *NAMESPACE
 3af8a593fcd744f27b2f1c96703b4086 *R/AES.R
 5cdf9ffeccabac4146d01f46486d9874 *R/digest.R
@@ -9,8 +9,8 @@ db9e769e83f9c108e97ce8eb8dd7e825 *R/init.R
 14cddbd8465ff30bec5a355855130888 *R/sha1.R
 eb800ca67b8772a16154be453f36ba74 *R/vdigest.R
 a673761518607ae09b8f6357c6304c60 *R/zzz.R
-fa2693d0698d9a7c97b4e83a3c78925c *README.md
-6fc602e0daca88c974d870cc0054b143 *build/vignette.rds
+e3e41014ca2c664538599a4604dbe28e *README.md
+bf437c9fdede6a04bb711167df8be819 *build/vignette.rds
 b47a60fc7c78d503aba2c3af8d8f3d9a *cleanup
 cdd17dda453ee280bdbaac3b405874d6 *demo/00Index
 247a7f1a523cb39feb2941b00b82906a *demo/vectorised.R
@@ -59,7 +59,7 @@ c54ed3e558bdf85c3fc5b2ad51366983 *src/crc32c/crc32c_prefetch.h
 eb57fc780cb7319f9450a0b2b2e1d367 *src/crc32c/crc32c_read_le.h
 e2e7031f1ecb4873d9a278c5558449f5 *src/crc32c/crc32c_round_up.h
 533014571c97e2ffcd39319c56eb1941 *src/crc32c_portable.cpp
-0281df35b2f9e0d38508f13bf4c4fb7c *src/digest.c
+3a4a359ee70b7f1a13bbc78fb4aa2941 *src/digest.c
 dc3762ab113fccd9ae068ae763906c89 *src/digest2int.c
 93b9220dbdf27296bdf2824923f0b4f0 *src/init.c
 972a4374ab3e726afbab89332562daf2 *src/md5.c
@@ -79,6 +79,6 @@ e402c69cf0dba5f5a6d8004cf91b6c81 *src/xxhash.h
 9f96783529fb4458a873ed787b5d2630 *src/zconf.h
 95fdcdaa6c64cf71726e192d5eb1b608 *src/zlib.h
 c4564a01a95ad6d04fec9c4ef0561cee *src/zutil.h
-55b29bb6c8292127b5a709d9eeb3c3bb *tests/tinytest.R
+06e793bdffcc0b843ec921990ce840b2 *tests/tinytest.R
 6b37c59ba0b533a23e48589c49be6851 *vignettes/sha1.md
 c337c0e0c1e0c0dd67a87649ff442d9f *vignettes/water.css

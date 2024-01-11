@@ -2,7 +2,7 @@
 
   digest -- hash digest functions for R
 
-  Copyright (C) 2003 - 2023  Dirk Eddelbuettel <edd@debian.org>
+  Copyright (C) 2003 - 2024  Dirk Eddelbuettel <edd@debian.org>
 
   This file is part of digest.
 
@@ -21,6 +21,7 @@
 
 */
 
+#include <stdint.h> // for uint32_t
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -59,7 +60,7 @@ FILE* open_with_widechar_on_windows(const char* txt) {
     }
     buf = (wchar_t*) R_alloc(len, sizeof(wchar_t));
     if (buf == NULL) {
-        error("Could not allocate buffer of size: %ll", len);
+        error("Could not allocate buffer of size: %llu", len);
     }
 
     MultiByteToWideChar(CP_UTF8, 0, txt, -1, buf, len);
