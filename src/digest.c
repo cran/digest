@@ -199,17 +199,13 @@ SEXP digest(SEXP Txt, SEXP Algo, SEXP Length, SEXP Skip, SEXP Leave_raw, SEXP Se
         break;
     }
     case 6: {     /* xxhash32 case */
-        unsigned int val =  XXH32(txt, nChar, seed);
+        XXH32_hash_t val =  XXH32(txt, nChar, seed);
         snprintf(output, 128, "%08x", val);
         break;
     }
     case 7: {     /* xxhash64 case */
-        unsigned long long val =  XXH64(txt, nChar, seed);
-#if defined(WIN32) && !defined(_UCRT)
+        XXH64_hash_t val =  XXH64(txt, nChar, seed);
         snprintf(output, 128, "%016" PRIx64, val);
-#else
-        snprintf(output, 128, "%016llx", val);
-#endif
         break;
     }
     case 8: {     /* MurmurHash3 32 */
@@ -237,6 +233,16 @@ SEXP digest(SEXP Txt, SEXP Algo, SEXP Length, SEXP Skip, SEXP Leave_raw, SEXP Se
         uint32_t crc = 0;       /* initial value, can be zero */
         crc = crc32c_extend(crc, (const uint8_t*) txt, (size_t) nChar);
         snprintf(output, 128, "%08x", crc);
+        break;
+    }
+    case 12: {		/* xxh3_64bits */
+        XXH64_hash_t val =  XXH3_64bits_withSeed(txt, nChar, seed);
+        snprintf(output, 128, "%016" PRIx64, val);
+        break;
+    }
+    case 13: {		/* xxh3_128bits */
+        XXH128_hash_t val =  XXH3_128bits_withSeed(txt, nChar, seed);
+        snprintf(output, 128, "%016" PRIx64 "%016" PRIx64, val.high64, val.low64);
         break;
     }
     case 101: {     /* md5 file case */
@@ -401,7 +407,7 @@ SEXP digest(SEXP Txt, SEXP Algo, SEXP Length, SEXP Skip, SEXP Leave_raw, SEXP Se
               }
             }
         }
-        unsigned int val =  XXH32_digest(state);
+        XXH32_hash_t val =  XXH32_digest(state);
         XXH32_freeState(state);
 
         snprintf(output, 128, "%08x", val);
@@ -427,20 +433,15 @@ SEXP digest(SEXP Txt, SEXP Algo, SEXP Length, SEXP Skip, SEXP Leave_raw, SEXP Se
             }
         } else {
             while ( ( nChar = fread( buf, 1, sizeof( buf ), fp ) ) > 0) {
-              XXH_errorcode const updateResult = XXH64_update(state, buf, nChar);
+                XXH_errorcode const updateResult = XXH64_update(state, buf, nChar);
               if (updateResult == XXH_ERROR) {
                 error("Error in `XXH64_update()`"); 		/* #nocov */
               }
             }
         }
-        unsigned long long val =  XXH64_digest(state);
+        XXH64_hash_t val =  XXH64_digest(state);
         XXH64_freeState(state);
-
-#ifdef WIN32
         snprintf(output, 128, "%016" PRIx64, val);
-#else
-        snprintf(output, 128, "%016llx", val);
-#endif
         break;
     }
     case 108: {     /* murmur32 */
@@ -514,6 +515,69 @@ SEXP digest(SEXP Txt, SEXP Algo, SEXP Length, SEXP Skip, SEXP Leave_raw, SEXP Se
         snprintf(output, 128, "%08x", (unsigned int) crc);
         break;
     }
+    case 112: {     /* xxh3_64 */
+        unsigned char buf[BUF_SIZE];
+        XXH3_state_t* const state = XXH3_createState();
+
+        if (skip > 0) fseek(fp, skip, SEEK_SET);
+        XXH_errorcode const resetResult = XXH3_64bits_reset(state);
+        if (resetResult == XXH_ERROR) {
+            error("Error in `XXH3_reset()`"); 				/* #nocov */
+        }
+        if (length>=0) {
+            while ( ( nChar = fread( buf, 1, sizeof( buf ), fp ) ) > 0 && length>0) {
+                if (nChar>length) nChar=length;
+                XXH_errorcode const updateResult = XXH3_64bits_update(state, buf, nChar);
+                if (updateResult == XXH_ERROR) {
+                    error("Error in `XXH3_64bits_update()`"); 		/* #nocov */
+                }
+                length -= nChar;
+            }
+        } else {
+            while ( ( nChar = fread( buf, 1, sizeof( buf ), fp ) ) > 0) {
+                XXH_errorcode const updateResult = XXH3_64bits_update(state, buf, nChar);
+                if (updateResult == XXH_ERROR) {
+                    error("Error in `XXH3_64bit_update()`"); 		/* #nocov */
+                }
+            }
+        }
+        XXH64_hash_t val =  XXH3_64bits_digest(state);
+        XXH3_freeState(state);
+        snprintf(output, 128, "%016" PRIx64, val);
+        break;
+    }
+    case 113: {     /* xxh3_128 */
+        unsigned char buf[BUF_SIZE];
+        XXH3_state_t* const state = XXH3_createState();
+
+        if (skip > 0) fseek(fp, skip, SEEK_SET);
+        XXH_errorcode const resetResult = XXH3_128bits_reset(state);
+        if (resetResult == XXH_ERROR) {
+            error("Error in `XXH3_reset()`"); 				/* #nocov */
+        }
+        if (length>=0) {
+            while ( ( nChar = fread( buf, 1, sizeof( buf ), fp ) ) > 0 && length>0) {
+                if (nChar>length) nChar=length;
+                XXH_errorcode const updateResult = XXH3_128bits_update(state, buf, nChar);
+                if (updateResult == XXH_ERROR) {
+                    error("Error in `XXH3_128bits_update()`"); 		/* #nocov */
+                }
+                length -= nChar;
+            }
+        } else {
+            while ( ( nChar = fread( buf, 1, sizeof( buf ), fp ) ) > 0) {
+                XXH_errorcode const updateResult = XXH3_128bits_update(state, buf, nChar);
+                if (updateResult == XXH_ERROR) {
+                    error("Error in `XXH3_128bit_update()`"); 		/* #nocov */
+                }
+            }
+        }
+        XXH128_hash_t val =  XXH3_128bits_digest(state);
+        XXH3_freeState(state);
+        snprintf(output, 128, "%016" PRIx64 "%016" PRIx64, val.high64, val.low64);
+        break;
+    }
+
     default: {
         error("Unsupported algorithm code"); /* should not be reached due to test in R */ /* #nocov */
     }
