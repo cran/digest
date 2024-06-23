@@ -1,6 +1,6 @@
-27629dbdc1df3b14a26221e632302644 *ChangeLog
-d13bd40160277850755df2a65f17f800 *DESCRIPTION
-14402ee218da75987f233d61fa84ab8d *NAMESPACE
+c40d7106fd1e1bea3538b54e5a4f87ee *ChangeLog
+4d9d037a5cbaec3e0c634b5865452653 *DESCRIPTION
+b50ecf9fbca661ae3c3a6a77e2ad55d2 *NAMESPACE
 3af8a593fcd744f27b2f1c96703b4086 *R/AES.R
 7fb62b92f6907d6426df47ff8bc55939 *R/digest.R
 481f6406e42aeaf0eb9da80ebd1c3601 *R/digest2int.R
@@ -9,8 +9,8 @@ db9e769e83f9c108e97ce8eb8dd7e825 *R/init.R
 14cddbd8465ff30bec5a355855130888 *R/sha1.R
 71b80de880320399feb9f51abd8b8f64 *R/vdigest.R
 a673761518607ae09b8f6357c6304c60 *R/zzz.R
-8cc2b728577df13c520893c8035a2ca9 *README.md
-c661a80b11a8fca0caf30d71f241e3a6 *build/vignette.rds
+f6cc4955afb25fc4e84e9844aceb4dae *README.md
+3e350a70cd41fa837d56a14f78cdc299 *build/vignette.rds
 b47a60fc7c78d503aba2c3af8d8f3d9a *cleanup
 cdd17dda453ee280bdbaac3b405874d6 *demo/00Index
 247a7f1a523cb39feb2941b00b82906a *demo/vectorised.R
@@ -22,7 +22,7 @@ b287b9aebee184ad785b11f9f85bbc82 *inst/doc/sha1.html
 d8752af8c06b44fef31655f207b4106f *inst/tinytest/test_aes.R
 f930ce5c1f9bbcd3b6fe97fd7b5b27f8 *inst/tinytest/test_blake3.R
 052184be0e884920438e1779a03f8759 *inst/tinytest/test_crc32.R
-3e5b3708f61641cb7a9c2486adc10a90 *inst/tinytest/test_digest.R
+54e8706929993b3ebc546fe6ee3b6322 *inst/tinytest/test_digest.R
 6681e580fd409258ed4fbdeb77a14cd4 *inst/tinytest/test_digest2int.R
 8e8415ddde36eb03eae83e0ae0e5bb0c *inst/tinytest/test_encoding.R
 2b3efdc9712ac7f956f79a80da4d0d00 *inst/tinytest/test_hmac.R
@@ -32,7 +32,7 @@ f930ce5c1f9bbcd3b6fe97fd7b5b27f8 *inst/tinytest/test_blake3.R
 612e0a4832b86b69c8c04f2916f3b16a *inst/tinytest/test_raw.R
 6e3548a6e9bdf2681f6bdc173ee0a8d2 *inst/tinytest/test_sha1.R
 5a7722c7c256daabc3e27b343c4321b6 *man/AES.Rd
-571d9f8327df0982b7e01b0cf5ad31e2 *man/digest.Rd
+9445b1d6e1796c0535e911cd3ee21040 *man/digest.Rd
 d45f3ac5c54a9b0f08ba342b22b9d332 *man/digest2int.Rd
 4e1c2885b0335799671cc924991f5471 *man/hmac.Rd
 9d566e9d729f574b922fb174f20f1d3b *man/makeRaw.Rd
@@ -40,15 +40,15 @@ b00315435b5f3bf83ef66af1911270ec *man/sha1.Rd
 990744b0bce3f88d9ec0203bc4812a78 *man/vdigest.Rd
 8cd655ef39c18515fe615d956b21863d *src/Makevars
 8cd655ef39c18515fe615d956b21863d *src/Makevars.win
-8d217da07ceab19fbe07c05853a936c2 *src/SpookyV2.cpp
+1fbc5e27d2c0af2b9946288b299e4c79 *src/SpookyV2.cpp
 29f0a9285b34812cdf91dcf65d0594c4 *src/SpookyV2.h
 a529d657388750546c7e03442eb01c31 *src/aes.c
 12398d282dd19894ed5548fc55fff7c4 *src/aes.h
-90974df9d6984b6a4f06aae3d75bbe6a *src/blake3.c
+5c0685a5951493e00e070f1a154225ba *src/blake3.c
 23350b7351de5b42a6aff1bbeadd4338 *src/blake3.h
 5d44f6c6e0e8333b0d343beba8c4f772 *src/blake3_dispatch.c
-653116045f28590f7408b41ee0d9b152 *src/blake3_impl.h
-ceb8de8ba5e178fef7ed7964ae300ee4 *src/blake3_portable.c
+ec01dc4c7f8395d7d48ed355818527bc *src/blake3_impl.h
+a50e559803122fe80a4434dbf0d4b319 *src/blake3_portable.c
 8eecbbc3edfec9fd8b0ee3209c1b924f *src/crc32.c
 4d1cfa258e52f3f91b09afdba248fec5 *src/crc32.h
 dd634d9edc40fba14ace4af5a083ed18 *src/crc32c.cpp
@@ -59,7 +59,7 @@ c54ed3e558bdf85c3fc5b2ad51366983 *src/crc32c/crc32c_prefetch.h
 eb57fc780cb7319f9450a0b2b2e1d367 *src/crc32c/crc32c_read_le.h
 e2e7031f1ecb4873d9a278c5558449f5 *src/crc32c/crc32c_round_up.h
 533014571c97e2ffcd39319c56eb1941 *src/crc32c_portable.cpp
-144a97bb649fb0f090c7346f2f3b7a6a *src/digest.c
+ad7e463db44bd7a8378aea6b74ee095a *src/digest.c
 dc3762ab113fccd9ae068ae763906c89 *src/digest2int.c
 93b9220dbdf27296bdf2824923f0b4f0 *src/init.c
 972a4374ab3e726afbab89332562daf2 *src/md5.c
@@ -73,7 +73,7 @@ c320b4628947353a4b1040458e04642c *src/sha2.c
 8cb23ad7160a7a9faf1f3b2b6ed3c6bc *src/sha2.h
 c8089bc1a0cda904888249da6af7f29c *src/sha256.c
 82a758ff49a4a2c5dfc82852d57f9a44 *src/sha256.h
-a2c26c568d10a100c53fc67035bc06ec *src/spooky_serialize.cpp
+a2a536db75a78b080a02ae296a4fb9be *src/spooky_serialize.cpp
 9f681b5a2cafa7dff67d7e4ac13d1302 *src/xxhash.c
 c6a5f8d7d22366a65a25aa87b9e33e9a *src/xxhash.h
 9f96783529fb4458a873ed787b5d2630 *src/zconf.h

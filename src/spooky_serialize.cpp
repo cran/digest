@@ -1,3 +1,4 @@
+//  Copyright (C) 2024         Dirk Eddelbuettel
 //  Copyright (C) 2019         Kendon Bell
 //  Copyright (C) 2014         Gabe Becker
 //
@@ -21,6 +22,7 @@
 #include <config.h>
 #endif
 
+#define R_NO_REMAP
 #define USE_RINTERNALS
 #include <R.h>
 #include <Rinternals.h>
@@ -40,9 +42,9 @@ static void OutBytesSpooky(R_outpstream_t stream, void *buf, int length) {
     uint8 to_skip = 0;
     spooky->GetSkipCounter(&skipped);
     spooky->GetToSkip(&to_skip);
-    if(skipped < to_skip){
-        if((skipped + length) > to_skip){
-            error("Serialization header has an unexpected length. Please file an issue at https://github.com/eddelbuettel/digest/issues."); // #nocov
+    if (skipped < to_skip){
+        if ((skipped + length) > to_skip){
+            Rf_error("Serialization header has an unexpected length. Please file an issue at https://github.com/eddelbuettel/digest/issues."); // #nocov
         }
         spooky->UpdateSkipCounter(length);
     } else {
@@ -52,10 +54,10 @@ static void OutBytesSpooky(R_outpstream_t stream, void *buf, int length) {
 
 
 static void InitSpookyPStream(R_outpstream_t stream, SpookyHash *spooky,
-			      R_pstream_format_t type, int version,
-			      SEXP (*phook)(SEXP, SEXP), SEXP pdata) {
+                              R_pstream_format_t type, int version,
+                              SEXP (*phook)(SEXP, SEXP), SEXP pdata) {
      R_InitOutPStream(stream, (R_pstream_data_t) spooky, type, version,
-		     OutCharSpooky, OutBytesSpooky, phook, pdata);
+                      OutCharSpooky, OutBytesSpooky, phook, pdata);
 }
 
 
@@ -63,8 +65,8 @@ static void InitSpookyPStream(R_outpstream_t stream, SpookyHash *spooky,
 /* ought to quote the argument, but it should only be an ENVSXP or STRSXP */
 static SEXP CallHook(SEXP x, SEXP fun) {			// #nocov start
     SEXP val, call;
-    PROTECT(call = LCONS(fun, LCONS(x, R_NilValue)));
-    val = eval(call, R_GlobalEnv);
+    PROTECT(call = Rf_lcons(fun, Rf_lcons(x, R_NilValue)));
+    val = Rf_eval(call, R_GlobalEnv);
     UNPROTECT(1);
     return val;
 }								// #nocov end
@@ -72,17 +74,17 @@ static SEXP CallHook(SEXP x, SEXP fun) {			// #nocov start
 
 extern "C" SEXP spookydigest_impl(SEXP s, SEXP to_skip_r, SEXP seed1_r, SEXP seed2_r, SEXP version_r, SEXP fun) {
     SpookyHash spooky;
-    double seed1_d = NUMERIC_VALUE(seed1_r);
-    double seed2_d = NUMERIC_VALUE(seed2_r);
-    uint64 seed1 = seed1_d;
-    uint64 seed2 = seed2_d;
+    double seed1_d = Rf_asReal(seed1_r);
+    double seed2_d = Rf_asReal(seed2_r);
+    uint64_t seed1 = static_cast<uint64_t>(seed1_d);
+    uint64_t seed2 = static_cast<uint64_t>(seed2_d);
 
-    uint8 to_skip = INTEGER_VALUE(to_skip_r);
+    uint8_t to_skip = static_cast<uint8_t>(Rf_asInteger(to_skip_r));
     spooky.Init(seed1, seed2, to_skip);
     R_outpstream_st spooky_stream;
     R_pstream_format_t type = R_pstream_binary_format;
     SEXP (*hook)(SEXP, SEXP);
-    int version = INTEGER_VALUE(version_r);
+    int version = Rf_asInteger(version_r);
     hook = fun != R_NilValue ? CallHook : NULL;
     InitSpookyPStream(&spooky_stream, &spooky, type, version, hook, fun);
     R_Serialize(s, &spooky_stream);
@@ -91,7 +93,7 @@ extern "C" SEXP spookydigest_impl(SEXP s, SEXP to_skip_r, SEXP seed1_r, SEXP see
     uint64 h1, h2;
     spooky.Final(&h1, &h2);
     SEXP ans;
-    PROTECT(ans = allocVector(RAWSXP, 16));
+    PROTECT(ans = Rf_allocVector(RAWSXP, 16));
     unsigned char *tmp;
     tmp  = (unsigned char *) &h1;
     for (int i = 0; i < 8; i++)
